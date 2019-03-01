@@ -84,35 +84,9 @@ void init2(const char s[], vector<string> &v)
 	memset(vis[0], true, sizeof(vis[0]));
 }
 
-void show_f(const char s[])
-{
-	cout << "  ";
-	for (int i = 0; i < slen; i++)
-		cout << s[i] << ' ';
-	cout << endl;
-	for (int i = 0; i < slen; i++)
-	{
-		cout << s[i] << ' ';
-		for (int j = 1; j <= slen; j++)
-			cout << f[i][j] << ' ';
-		cout << endl;
-	}
-}
+void show_f(const char s[]);
+void show_g(const char s[], int sp);
 
-void show_g(const char s[], int sp)
-{
-	//cout << "  ";
-	//for (int i = 0; i < slen; i++)
-		//cout << s[i] << ' ';
-	//cout << endl;
-	for (int i = 0; i < slen; i++)
-	{
-		//cout << s[i] << ' ';
-		for (int j = 1; j <= slen; j++)
-			cout << g[sp][i][j] << ' ';
-		cout << endl;
-	}
-}
 
 int dfs(int sp, int l, int r)
 {
@@ -120,15 +94,13 @@ int dfs(int sp, int l, int r)
 		return g[sp][l][r];
 	vis[sp][l][r] = true;
 	int ans = 0;
-	//for (int i = 1; i < r - sp; i++)
-		//ans = max(ans, dfs(0, l, i) + dfs(sp - 1, i, r));
 	for (int k = l; k < r; k++)
 	{
 		for (int i = 0; i <= sp; i++)
 		{
-			int j = sp - i;
+			int j = sp - i - 1;
 			//if (i >= k - l || j >= r - k)
-			if (i > k - l || j > r - k)
+			if (i >= k - l || j >= r - k)
 				continue;
 			ans = max(ans, dfs(i, l, k) + dfs(j, k, r));
 		}
@@ -155,4 +127,29 @@ int main()
 		}
 	}
 	return 0;
+}
+
+void show_f(const char s[])
+{
+	cout << "  ";
+	for (int i = 0; i < slen; i++)
+		cout << s[i] << ' ';
+	cout << endl;
+	for (int i = 0; i < slen; i++)
+	{
+		cout << s[i] << ' ';
+		for (int j = 1; j <= slen; j++)
+			cout << f[i][j] << ' ';
+		cout << endl;
+	}
+}
+
+void show_g(const char s[], int sp)
+{
+	for (int i = 0; i < slen; i++)
+	{
+		for (int j = 1; j <= slen; j++)
+			cout << g[sp][i][j] << ' ';
+		cout << endl;
+	}
 }

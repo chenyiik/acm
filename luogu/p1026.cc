@@ -119,12 +119,12 @@ int main()
 			//cout << i << endl;
 		init2(s, v);
 		//show_f(s);
-		printf("%d\n", dfs(m, 0, slen));
-		for (int i = 0; i <= m; i++)
-		{
-			cout << endl << i << endl;
-			show_g(s, i);
-		}
+		printf("%d\n", dfs(m - 1, 0, slen));
+		//for (int i = 0; i <= m; i++)
+		//{
+			//cout << endl << i << endl;
+			//show_g(s, i);
+		//}
 	}
 	return 0;
 }

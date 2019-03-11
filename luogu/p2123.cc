@@ -12,15 +12,9 @@ const int maxN = 20005;
 struct P
 {
 	int l, r;
-	bool operator<(const P &o) const 
-	{ 
-		//return l < o.l || l == o.l && r < o.r; 
-		//return r > o.r || r == o.r && l < o.l;
-		//int a = l - r, b = o.l - o.r;
-		//int a = max(l, r), b = max(o.l, o.r);
-		//return a < b || a == b && l < o.l || a == b && l == o.l && r > o.r;
-		return rand() & 1;
-	}
+	bool operator<(const P &o) const { return !(*this >= o); }
+	bool operator>=(const P &o) const { return o <= *this; }
+	bool operator<=(const P &o) const { return min(l, o.r) <= min(r, o.l); }
 } a[maxN];
 
 int main()

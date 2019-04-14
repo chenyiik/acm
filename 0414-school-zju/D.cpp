@@ -1,40 +1,33 @@
-#include<bits/stdc++.h>
+include<bits/stdc++.h>
 #define M 255
 using namespace std;
-char s[M];
+string s=string()+
+"UDRRIRLLLLLRUIRLLLDDRDDRLLR"+
+"RDRRIRLLLIIRUIRLLLDDRDDRLLR"+
+"UURUURUURUURUURUURUURUURUUR"+
+"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"+
+"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
 int dat[M][M];
 int mark[M][M];
 int mx[]={-1,0,1,0};
 int my[]={0,1,0,-1};
+int random(int L,int R){
+	return 1.0*rand()/RAND_MAX*(R-L)+L;
+}
 int main(){
+	/*
 	//freopen("D.txt","w",stdout);
 	srand(time(NULL));
 	rand();
 	int tot=0;
-	while(1){
+	int tp=10;
+	double ft=0;
+	for(int cas=0;cas<tp;cas++){
 		tot=0;
 		int T=1000;
 		int cnt=0;
 		int i,j;
 		int n=12,m=12,x=2,y=2,k=200;
-		for(i=0;i<81;i++){
-			string str="";
-			int rr=i%3;
-			int ll=i/3%3;
-			int dd=i/9%3;
-			int uu=i/27%3;
-			if(rr!=1)str+="R";
-			if(ll!=1)str+="L";
-			if(dd!=1)str+="D";
-			if(uu!=1)str+="U";
-			if(str.length()==0){
-				s[i]='P';
-				continue;
-			}
-			s[i]=str[rand()%str.length()];
-		}
-		for(i=81;i<243;i++)
-			s[i]='P';
 		for(i=1;i<=n;i++)
 			for(j=1;j<=m;j++)
 				dat[i][j]=1;
@@ -44,19 +37,14 @@ int main(){
 				for(j=2;j<m;j++)
 					dat[i][j]=0;
 			for(i=1;i<=50;i++){
-				int a=rand()%(n-2)+2;
-				int b=rand()%(m-2)+2;
+				int a=random(2,n-1);
+				int b=random(2,m-1);
 				while(dat[a][b]==2){
-					a=rand()%(n-2)+2;
-					b=rand()%(m-2)+2;
+					a=random(2,n-1);
+					b=random(2,m-1);
 				}
 				dat[a][b]=2;
 			}
-			/*
-			for(i=1;i<=n;i++)
-				for(j=1;j<=m;j++)
-					printf("%d%c",dat[i][j]," \n"[j==m]);
-					*/
 			int ans=0;
 			cnt++;
 			while(k--){
@@ -90,12 +78,13 @@ int main(){
 			}
 			tot+=ans;
 		}
-		if(tot>=47500)
-			break;
-		if(tot>15000)
-			printf("%d:%s\n",tot,s);
+		ft+=tot;
+		//cout<<tot<<endl;
 	}
-	printf("%d:%s\n",tot,s);
+	cout<<ft/tp<<endl;
+	*/
+	cout<<s<<endl;
 
 	return 0;
 }
+

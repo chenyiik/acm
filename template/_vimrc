@@ -4,6 +4,9 @@ func A()
 	exec "!g++ % -o %< -Wall -std=c++11 && %<"
 endfunc
 
+set nocompatible
+set backspace=indent,eol,start
+
 set autoindent
 set cindent
 set tabstop=4

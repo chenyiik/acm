@@ -3,6 +3,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
@@ -25,6 +26,7 @@ int main()
 		static vector<int> G[N * 100];
 		static int dist[N * 100][N];
 		static int u[N];
+		memset(dist, -1, sizeof(dist));
 		int nodes = 0;
 		u[1] = 0, u[2] = a[1][2];
 		if (a[1][2] != 0)
@@ -68,22 +70,71 @@ int main()
 					break;
 				}
 			}
-		//static vector<int> G[N * 100];
-		//static int dist[N * 100][N];
-		//static int u[N];
-			u[i] = s + d;
-			dist[nodes + d][i] = 0;
+#ifdef _D
+			if (s == 0)
+				break;
+#endif
 			if (d != 0)
 			{
-				for (int j = 0; j < d; j++)
+				G[s].push_back(nodes);
+				for (int j = 0; j < d - 1; j++)
 				{
 					G[nodes + j].push_back(nodes + j + 1);
 					dist[nodes + j][i] = d - j;
+					for (int k = 1; k < i; k++)
+						dist[nodes + j][k] = dist[nodes + j - 1][k] + 1;
 				}
-				G[nodes + d].push_back(nodes + d - 1);
+				G[nodes + d - 1].push_back(nodes + d - 1);
+				for (int k = 1; k < i; k++)
+					dist[nodes + d - 1][k] = dist[nodes + d - 2][k] + 1;
+				u[i] = nodes + d - 1;
+				dist[nodes + d - 1][i] = 0;
 			}
+			else
+			{
+				u[i] = s;
+				dist[s][i] = 0;
+			}
+			queue<int> Q;
+			Q.push(s);
+			while (!Q.empty())
+			{
+				int p = Q.front();
+				Q.pop();
+				for (int j : G[p])
+				{
+					if (dist[j][i] != -1)
+						continue;
+					dist[j][i] = dist[p][i] + 1;
+					Q.push(j);
+				}
+			}
+			nodes += d;
+#ifdef _D
+		cout << d << ' ' << s << endl;
+#endif
 		}
-		printf("%d\n", nodes);
+#ifdef _D
+		cout << endl;
+#endif
+		printf("%d\n", nodes - 1);
+		for (int i = 0; i < nodes; i++)
+			vector<int>().swap(G[i]);
+#ifdef _D
+		for (int i = 1; i <= n; i++)
+			cout << u[i] << ' ';
+		cout << endl;
+		for (int i = 0; i < nodes; i++)
+		{
+			cout << i << '\t';
+			for (int j = 1; j <= n; j++)
+				cout << dist[i][j] << ' ';
+			cout << endl << '\t';
+			for (int j : G[i])
+				cout << j << ' ';
+			cout << endl;
+		}
+#endif
 	}
 	return 0;
 }

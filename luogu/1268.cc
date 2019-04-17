@@ -27,7 +27,7 @@ int main()
 		static int dist[N * 100][N];
 		static int u[N];
 		memset(dist, -1, sizeof(dist));
-		int nodes = 0;
+		int nodes = 1;
 		u[1] = 0, u[2] = a[1][2];
 		if (a[1][2] != 0)
 		{
@@ -46,7 +46,6 @@ int main()
 		}
 		else
 		{
-			nodes++;
 			dist[0][1] = dist[0][2] = 0;
 		}
 		for (int i = 3; i <= n; i++)
@@ -77,18 +76,20 @@ int main()
 			if (d != 0)
 			{
 				G[s].push_back(nodes);
-				for (int j = 0; j < d - 1; j++)
-				{
-					G[nodes + j].push_back(nodes + j + 1);
-					dist[nodes + j][i] = d - j;
-					for (int k = 1; k < i; k++)
-						dist[nodes + j][k] = dist[nodes + j - 1][k] + 1;
-				}
-				G[nodes + d - 1].push_back(nodes + d - 1);
+				G[nodes].push_back(s);
+				dist[s][i] = d;
 				for (int k = 1; k < i; k++)
-					dist[nodes + d - 1][k] = dist[nodes + d - 2][k] + 1;
-				u[i] = nodes + d - 1;
+					dist[nodes][k] = dist[s][k] + 1;
+				for (int j = nodes; j < nodes + d - 1; j++)
+				{
+					G[j].push_back(j + 1);
+					G[j + 1].push_back(j);
+					dist[j][i] = d - (j - nodes) - 1;
+					for (int k = 1; k < i; k++)
+						dist[j + 1][k] = dist[j][k] + 1;
+				}
 				dist[nodes + d - 1][i] = 0;
+				u[i] = nodes + d - 1;
 			}
 			else
 			{
@@ -118,8 +119,6 @@ int main()
 		cout << endl;
 #endif
 		printf("%d\n", nodes - 1);
-		for (int i = 0; i < nodes; i++)
-			vector<int>().swap(G[i]);
 #ifdef _D
 		for (int i = 1; i <= n; i++)
 			cout << u[i] << ' ';
@@ -135,6 +134,8 @@ int main()
 			cout << endl;
 		}
 #endif
+		for (int i = 0; i < nodes; i++)
+			vector<int>().swap(G[i]);
 	}
 	return 0;
 }

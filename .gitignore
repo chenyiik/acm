@@ -1,6 +1,7 @@
 .DS_Store
 cmake
 0.cc
+0.url
 *.exe
 *.class
 autogit6.sh

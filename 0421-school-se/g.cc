@@ -47,6 +47,8 @@ int main()
 		if (!is_prime(m))
 			continue;
 		LL st = max(1LL, m - i);
+		if (st + 300 > 1LL + static_cast<LL>(1e9))
+			continue;
 		bool b = true;
 		for (LL j = 0; j < n; j++)
 		{

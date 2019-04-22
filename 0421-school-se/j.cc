@@ -183,7 +183,7 @@ namespace cyc
 
 	bool solve()
 	{
-		cin >> s;
+		cin >> n;
 		memset(a, 0, sizeof(a));
 		for (int i = 0; i < n; i++)
 		{
@@ -222,7 +222,7 @@ namespace cyc
 int main()
 {
 	int t = 0;
-	cin >> s;
+	cin >> t;
 	while (t--)
 		puts(cyc::solve() ? "Ye5" : "N0");
 	return 0;

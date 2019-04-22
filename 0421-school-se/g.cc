@@ -6,11 +6,24 @@
 
 using namespace std;
 
-int euler_phi(int n)
+typedef long long LL;
+
+LL is_prime(LL n)
 {
-	int m = (int)sqrt(n + 0.5);
-	int ans = n;
-	for (int i = 2; i <= m; i++)
+	if (n < 2)
+		return false;
+	LL m = (LL)sqrt(n + 0.5);
+	for (LL i = 2; i <= m; i++)
+		if (n % i == 0)
+			return false;
+	return true;
+}
+
+LL euler_phi(LL n)
+{
+	LL m = (LL)sqrt(n + 0.5);
+	LL ans = n;
+	for (LL i = 2; i <= m; i++)
 		if (n % i == 0)
 		{
 			ans = ans / i * (i - 1);
@@ -24,15 +37,18 @@ int euler_phi(int n)
 
 int main()
 {
-	const int n = 300;
-	static int a[n];
-	for (int i = 0; i < n; i++)
-		scanf("%d", &a[i]);
-	for (int i = 0; i < n; i++)
+	const LL n = 300;
+	static LL a[n];
+	for (LL i = 0; i < n; i++)
+		scanf("%lld", &a[i]);
+	for (LL i = 0; i < n; i++)
 	{
-		int m = a[i] + 1, st = max(1, m - i);
+		LL m = a[i] + 1;
+		if (!is_prime(m))
+			continue;
+		LL st = max(1LL, m - i);
 		bool b = true;
-		for (int j = 0; j < n; j++)
+		for (LL j = 0; j < n; j++)
 		{
 			if (euler_phi(st + j) != a[j])
 			{
@@ -41,7 +57,7 @@ int main()
 			}
 		}
 		if (b)
-			return printf("%d\n", st), 0;
+			return printf("%lld\n", st), 0;
 	}
 	puts("yang12138 laji");
 	return 0;

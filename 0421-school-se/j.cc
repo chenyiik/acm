@@ -183,12 +183,12 @@ namespace cyc
 
 	bool solve()
 	{
-		scanf("%d", &n);
+		cin >> s;
 		memset(a, 0, sizeof(a));
 		for (int i = 0; i < n; i++)
 		{
 			char s[5];
-			scanf("%s", s);
+			cin >> s;
 			if (*s == '1')
 				a[10]++;
 			else if (*s == 'J')
@@ -222,7 +222,7 @@ namespace cyc
 int main()
 {
 	int t = 0;
-	scanf("%d", &t);
+	cin >> s;
 	while (t--)
 		puts(cyc::solve() ? "Ye5" : "N0");
 	return 0;

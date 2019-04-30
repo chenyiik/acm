@@ -5,17 +5,26 @@
 
 using namespace std;
 
+typedef long long LL;
+
 int main()
 {
-	long long n = 0, ans = 1;
+	LL n = 0, ans = 1;
 	scanf("%lld", &n);
-	for (long long i = 1; i <= n; i++)
+	LL two = 0, five = 0;
+	for (LL i = 1; i <= n; i++)
 	{
-		ans *= i;
-		while (ans % 10 == 0)
-			ans /= 10;
-		ans %= 1000;
+		LL x = i;
+		while (x % 2 == 0)
+			two++, x /= 2;
+		while (x % 5 == 0)
+			five++, x /= 5;
+		ans = ans * x % 10;
 	}
-	printf("%lld\n", ans % 10);
+	while (two > five)
+		ans = ans * 2 % 10, two--;
+	while (five > two)
+		ans = ans * 5 % 10, five--;
+	printf("%lld\n", ans);
 	return 0;
 }

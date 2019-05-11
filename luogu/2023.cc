@@ -25,28 +25,76 @@ namespace cyc
 	int y1, y2;
 	LL v;
 
-	void pushdown(int o)
-	{
-	}
-
 	void update_add(int o = 1, int L = 1, int R = maxN)
 	{
+		int lc = o * 2, rc = o * 2 + 1;
+		if (y1 <= L && y2 >= R)
+			addv[o] += v;
+		else
+		{
+			int M = L + (R - L) / 2;
+			if (y1 <= M)
+				update(lc, L, M);
+			if (y2 > M)
+				update(rc, M + 1, R);
+		}
+	}
+
+	void pushdown(int o)
+	{
+		int lc = o * 2, rc = o * 2 + 1;
+		if (mul[o] > 1)
+		{
+			mul[lc] *= mul[o];
+			mul[rc] *= mul[o];
+			mul[o] = 1;
+		}
 	}
 
 	void update_mul(int o = 1, int L = 1, int R = maxN)
 	{
+		int lc = o * 2, rc = o * 2 + 1;
+		if (y1 <= L && y2 >= R)
+			setv[o] = v;
+		else
+		{
+			pushdown(o);
+			int M = L + (R - L) / 2;
+			if (y1 <= M)
+				update(lc, L, M);
+			else
+				maintain(lc, L, M);
+			if (y2 > M)
+				update(rc, M + 1, R);
+			else
+				maintain(rc, M + 1, R);
+		}
+		maintain(o, L, R);
 	}
 
 	LL _sum;
-	void query(int o = 1, int L = 1, int R = maxN)
+	void query(int o = 1, int L = 1, int R = maxN, LL add)
 	{
-
+		if (y1 <= L && y2 >= R)
+		{
+			_sum += sumv[o] + add * (R - L + 1);
+		}
+		else
+		{
+			int M = L + (R - L) / 2;
+			if (y1 <= M)
+				query(o * 2, L, M, add + addv[o]);
+			if (y2 > M)
+				query(o * 2 + 1, M + 1, R, add + addv[o]);
+		}
 	}
 
 	int main()
 	{
 		int n;
 		scanf("%d%lld", &n, &mod);
+		for (int i = 0; i < maxN * 2; i++)
+			mul[i] = 1;
 		for (int i = 1; i <= n; i++)
 		{
 			scanf("%lld", &v);

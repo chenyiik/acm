@@ -1,7 +1,11 @@
 nmap <F5> :call A()<CR>
 func A()
 	exec "wa"
-	exec "!g++ % -o %< -Wall -std=c++11 && %<"
+	if &filetype == 'cpp'
+		exec "!g++ % -o %< -Wall -std=c++11 && %<"
+	elseif &filetype == 'python'
+		exec "!python3 %"
+	endif
 endfunc
 
 set nocompatible
@@ -18,11 +22,3 @@ set cursorline
 
 syntax on
 colorscheme torte
-
-nmap <F9> :call C()<CR>
-func C()
-	exec "wa"
-	exec "!g++ % -o %< -Wall -std=c++11"
-endfunc
-
-nmap <C-F9> :!%<<CR>

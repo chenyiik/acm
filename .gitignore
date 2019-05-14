@@ -4,3 +4,5 @@ cmake
 0.url
 *.exe
 *.class
+*.out
+

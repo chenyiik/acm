@@ -99,6 +99,7 @@ namespace cyc
 	{
 		int n, m;
 		scanf("%d", &n);
+		scanf("%d", &m);
 		scanf("%lld", &mod);
 		for (int i = 0; i < maxN * 2; i++)
 			mulv[i] = 1;
@@ -108,7 +109,6 @@ namespace cyc
 			y1 = y2 = i;
 			update_add();
 		}
-		scanf("%d", &m);
 		while (m--)
 		{
 			int op;

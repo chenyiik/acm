@@ -1,0 +1,17 @@
+nmap <F5> :call A()<CR>
+func A()
+	exec "wa"
+	exec "!g++ % -o %< -Wall -std=c++11 && %<"
+endfunc
+
+set autoindent
+set cindent
+set tabstop=4
+set shiftwidth=4
+
+set nu
+set ruler
+set cursorline
+
+syntax on
+colorscheme torte

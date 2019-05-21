@@ -1,24 +1,9 @@
-nmap <F5> :call A()<CR>
-func A()
-	exec "wa"
-	if &filetype == 'cpp'
-		exec "!g++ % -o %< -Wall -std=c++11 && %<"
-	elseif &filetype == 'python'
-		exec "!python3 %"
-	endif
-endfunc
+nm <f5> :w<cr>:!g++ % -o %< -Wall -std=c++11 && %<<cr>
+nm <f6> :w<cr>:!python3 %<cr>
+se ai cin ts=4 sw=4 nu cul nocp bs=indent,eol,star
+colo t*
 
-set nocompatible
-set backspace=indent,eol,start
-
-set autoindent
-set cindent
-set tabstop=4
-set shiftwidth=4
-
-set nu
-set ruler
-set cursorline
-
-syntax on
-colorscheme torte
+"syntax on
+"set ruler
+"set nocompatible
+"set backspace=indent,eol,start

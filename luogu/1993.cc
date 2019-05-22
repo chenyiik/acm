@@ -8,6 +8,8 @@ using namespace std;
 
 struct Edge { int from, to, dist; };
 
+int gg = 0;
+
 struct SPFA
 {
 	static const int maxn = 200000;
@@ -21,10 +23,7 @@ struct SPFA
 
 	void init(int n)
 	{
-		this->n = n;
-		for (int i = 0; i <= n; i++)
-			G[i].clear();
-		edges.clear();
+		this->n = n + 1;
 	}
 
 	void AddEdge(int from, int to, int dist)
@@ -45,7 +44,6 @@ struct SPFA
 			inq[0] = true;
 			Q.push(i);
 		}
-
 		while (!Q.empty())
 		{
 			int u = Q.front();
@@ -77,11 +75,6 @@ int main()
 	int n, m;
 	scanf("%d%d", &n, &m);
 	A.init(n);
-	for (int i = 1; i <= n; i++)
-	{
-		A.AddEdge(0, i, 0);
-		A.AddEdge(i, 0, 0);
-	}
 	while (m--)
 	{
 		int q, a, b, c;
@@ -91,12 +84,12 @@ int main()
 			scanf("%d", &c);
 			A.AddEdge(a, b, -c);
 		}
-		if (q == 2)
+		else if (q == 2)
 		{
 			scanf("%d", &c);
 			A.AddEdge(b, a, c);
 		}
-		else //if (q == 3)
+		else if (q == 3)
 		{
 			A.AddEdge(a, b, 0);
 			A.AddEdge(b, a, 0);

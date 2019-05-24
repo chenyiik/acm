@@ -2,12 +2,18 @@
 #include <cmath>
 #include <algorithm>
 #include <string>
-#include <queue>
 #include <vector>
+#include <list>
+#include <stack>
+#include <queue>
 #include <set>
 #include <map>
 
+using namespace std;
+
 typedef long long LL;
+
+const int oo = 0x3f3f3f3f;
 
 void sieve(int);
 int gen_primes(int);

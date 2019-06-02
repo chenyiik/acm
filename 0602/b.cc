@@ -10,11 +10,11 @@ typedef long long LL;
 
 const int maxn = (int)1e5 + 10;
 
-vector<int> v[maxn];
+vector<LL> v[maxn];
 int lim[maxn];
-int sum[maxn];
+LL sum[maxn];
 
-int gcd(LL a, LL b) { return !b ? a : gcd(b, a % b); }
+LL gcd(LL a, LL b) { return !b ? a : gcd(b, a % b); }
 
 int main()
 {
@@ -40,7 +40,7 @@ int main()
 		}
 		for (int i = 1; i <= m; i++)
 		{
-			sort(v[i].begin() + 1, v[i].end(), [](int a, int b) { return a > b; });
+			sort(v[i].begin() + 1, v[i].end(), [](LL a, LL b) { return a > b; });
 			v[i].push_back(0);
 		}
 		memset(sum, 0, sizeof(sum));

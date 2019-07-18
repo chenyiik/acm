@@ -47,12 +47,13 @@ int main()
 				ans += f(a, n, i / (double)d) / d;
 			ans += tmp;
 		}
-		/*
+		printf("%.6f\n", PI / ans);
+		/**
 		const int t1 = 10000, t2 = 10000;
 		for (int i = 1; i <= t1 * t2; i++)
 			ans += f(a, n, i / (double)t2) / t2;
 		*/
-		cout << PI / ans << endl;
+		//cout << PI / ans << endl;
 	}
 	return 0;
 }

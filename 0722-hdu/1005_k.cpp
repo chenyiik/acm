@@ -92,15 +92,17 @@ int main()
 	while (T--)
 	{
 	    scanf("%lld%lld",&n,&m);
-	    if (n==1) {printf("%lld\n",0);continue;}
+	    if (n==1) printf("%lld\n",0);
 	    SPFA::init();
 	    for(long long i=1;i<=m;++i)
 	    {
 	    	scanf("%lld%lld%lld",&Sta,&End,&W);
 	    	SPFA::AddEdge(Sta,End,W,W);
 	    }
+	    if (n==1) goto lb;
 	    SPFA::spfa(1);SPFA::Rebuild_Graph();
 	    printf("%lld\n",Dinic::max_flow());
+	    lb:continue;
 	}
     return 0;
 }

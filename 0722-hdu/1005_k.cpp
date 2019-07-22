@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define INF 0x7f7f7f7f7f7f7f7f
+#define INF 0x3f3f3f3f3f3f3f3f 
 #define MAXN 10050
 #define MAXM 5005001
 long long n,m,S,T,Sta,End,Ws[MAXM],W,C;
@@ -63,7 +63,7 @@ namespace SPFA
     void spfa(const long long &s)
     {
     	while (!q.empty()) q.pop();
-    	memset(dis,0x7f,sizeof(dis));
+    	memset(dis,0x3f,sizeof(dis));
     	dis[s]=0; inq[s]=1; q.push(s);
         while(!q.empty())
         {

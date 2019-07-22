@@ -1,4 +1,9 @@
-#include<bits/stdc++.h>
+//#include<bits/stdc++.h>
+#include <cstdio>
+#include <cstring>
+#include <iostream>
+#include <algorithm>
+#include <queue>
 using namespace std;
 #define INF 0x7f7f7f7f7f7f7f7f
 #define MAXN 10050

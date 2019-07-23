@@ -7,14 +7,11 @@ using namespace std;
 
 typedef long long LL;
 
-const int maxn = int(3e5) + 5, maxm = int(3e4) + 5, maxv = 13;
+const int maxn = int(3e5) + 15, maxv = 13;
 LL a[maxn], L[maxv][maxn], R[maxv][maxn], P[maxv][maxn], ans = 0, k;
 
 void init(const LL *a, int n, int u, int v)
 {
-	//cout << u << ' ' << v << endl;
-	if (n < 1)
-		return;
 	LL tot = -k;
 	P[u][v] = -k;
 	for (int i = 0; i < n; i++)
@@ -23,7 +20,6 @@ void init(const LL *a, int n, int u, int v)
 		if (tot < 0)
 			tot = -k;
 		P[u][v] += a[i];
-		//cout << P[1][0] << endl;
 	}
 	tot = -k;
 	for (int i = 0; i < n; i++)
@@ -46,24 +42,21 @@ int main()
 		for (int d = 1; d <= bl; d++)
 			init(a + u + (d - 1) * m, m, u, d);
 		if (u + bl * m < n)
-			init(a + u + bl * m, m, u, bl);
+			init(a + u + bl * m, m, u, bl + 1);
 	}
 	for (int u = 1; u <= m; u++)
 	{
 		int bl = (n - u) / m;
 		ans = max(ans, L[u][0]);
-		LL tot = R[u][0];
+		LL tot = max(P[u][0], R[u][0]);
 		for (int i = 1; i <= bl + 1; i++)
 		{
 			ans = max(ans, tot + L[u][i]);
-			tot += P[u][i];
+			tot = max(tot + P[u][i], R[u][i]);
 			if (tot < 0)
 				tot = R[u][i];
 		}
 		ans = max(ans, tot);
-		//for (int i = 0; i <= bl + 1; i++)
-			//printf("%d %d %lld %lld %lld\n", u, i, P[u][i], L[u][i], R[u][i]);
-
 	}
 	printf("%lld\n", ans);
 	return 0;

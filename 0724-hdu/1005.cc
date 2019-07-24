@@ -29,7 +29,7 @@ void init()
 {
 	LL iv4 = inv(4);
 	for (LL i = 1; i < maxn; i++)
-		a[i] = i * (i - 1) % mod * iv4 % mod;
+		a[i] = i * (i - 1) * iv4 % mod;
 	for (int i = 0; i < maxn; i++)
 	{
 		c[i][0] = 1;
@@ -38,10 +38,11 @@ void init()
 	}
 	for (int k = 1; k < maxn; k++)
 	{
-		LL &kk = ans[k], ivk = inv((pow_mod(2, k) + mod - 1) % mod);
-		kk += a[k];
-		for (int i = 0, j = k; j > 1; i++, j--)
-			kk = (kk + c[k][i] * a[j] % mod * ivk) % mod;
+		LL &kk = ans[k];
+		for (int i = 0; i < k; i++)
+			kk = (kk + c[k][i] * a[k - i] % mod) % mod;
+		kk = kk * inv((pow_mod(2, k) + mod - 1) % mod) % mod;
+		kk = (kk + a[k]) % mod;
 	}
 	for (int i = 1; i < maxn; i++)
 		tot[i] = (tot[i - 1] + ans[i]) % mod;

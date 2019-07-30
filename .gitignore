@@ -1,6 +1,5 @@
 .DS_Store
 cmake
-0.cc
 *.exe
 *.class
 *.out

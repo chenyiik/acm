@@ -1,0 +1,82 @@
+#include <cstdio>
+#include <cstring>
+#include <iostream>
+#include <algorithm>
+#include <queue>
+#include <set>
+#include <stack>
+
+using namespace std;
+
+struct P { int u, v, p, n; };
+vector<int> G[static_cast<int>(1e5) + 7];
+P edges[static_cast<int>(1e5) + 7];
+struct Node { int id, ti; bool operator<(const Node &o) const { return id < o.id || (id == o.id && ti < o.ti); } };
+struct Node2 { int id, ti, prt; };
+int pre[static_cast<int>(1e5) + 7];
+bool vis[static_cast<int>(1e5) + 7];
+
+int main()
+{
+	int n = 0, m = 0;
+	scanf("%d%d", &n, &m);
+	for (int i = 0; i < m; i++)
+	{
+		int u = 0, v = 0, pre = 0, nxt = 0;
+		scanf("%d%d%d%d", &u, &v, &pre, &nxt);
+		edges[i] = {u, v, pre, nxt};
+		G[u].push_back(i);
+	}
+	int s = 0, t = 0, tp = 0, tn = 0;
+	scanf("%d%d%d%d", &s, &t, &tp, &tn);
+
+	memset(pre, -1, sizeof(pre));
+	memset(vis, 0, sizeof(vis));
+	queue<Node2> Q;
+	set<Node> S;
+	Q.push({s, tp, -1});
+	S.insert({s, tp});
+	bool mark = false;
+	int ebe = -1;
+	while (!Q.empty())
+	{
+		Node2 node = Q.front();
+		Q.pop();
+		for (int i = 0; i < G[node.id].size(); i++)
+		{
+			P &e = edges[G[node.id][i]];
+			if (vis[G[node.id][i]] || node.ti > e.p || S.find({e.v, e.n}) != S.end())
+				continue;
+			Q.push({e.v, e.n, G[node.id][i]});
+			S.insert({e.v, e.n});
+			pre[G[node.id][i]] = node.prt;
+			vis[G[node.id][i]] = true;
+			if (e.v == t && e.n == tn)
+			{
+				mark = true;
+				ebe = G[node.id][i];
+				break;
+			}
+		}
+		if (mark)
+			break;
+	}
+
+	if (!mark)
+		return puts("Impossible"), 0;
+	stack<int> St;
+	//for (int i = t; pre[i] != -1; i = edges[pre[i]].u)
+		//St.push(pre[i]);
+	for (int i = ebe; i != -1; i = pre[i])
+		St.push(i);
+
+	printf("%d\n", St.size());
+	while (!St.empty())
+	{
+		printf("%d ", 1 + St.top());
+		St.pop();
+	}
+	puts("");
+
+	return 0;
+}

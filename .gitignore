@@ -5,3 +5,4 @@ cmake
 *.class
 *.out
 *.o
+open.sh

@@ -1,0 +1,5 @@
+print(4)
+print(2**59)
+print(2**59-1)
+print(10**18)
+print(10**18-1)

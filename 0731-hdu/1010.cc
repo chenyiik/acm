@@ -59,8 +59,8 @@ int f(LL n)
 
 int main()
 {
-	m = gen_primes(int(32000));
-	//cout << m << endl;
+	m = gen_primes(int(3982));
+	cout << m << endl;
 	int t;
 	scanf("%d", &t);
 	while (t--)

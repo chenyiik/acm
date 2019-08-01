@@ -1,7 +1,9 @@
-#include<cstdio>
-#include<iostream>
-#include<cstring>
+//#include<bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <cstring>
 #define M 1000005
+#define LL long long
 using namespace std;
 int p;
 class BigNum{
@@ -10,7 +12,7 @@ class BigNum{
 		int len;
 		BigNum(){len=1;memset(a,0,sizeof(a));}
 		friend istream& operator>>(istream&,BigNum&);
-	__int128 operator% (const __int128 &b)const{
+	LL operator% (const __int128 &b)const{
 		int i;
 		__int128 d=0;
 		for(i=len-1;i>=0;i--)
@@ -49,18 +51,18 @@ istream& operator>>(istream &in,BigNum &b){
 	return in;
 }
 struct node{
-	__int128 a[2][2];
+	int a[2][2];
 	node(){a[0][0]=a[0][1]=a[1][0]=a[1][1]=0;}
 	node operator *(const node &b)const{
 		node c;
-		c.a[0][0]=(a[0][0]*b.a[0][0]%p+a[0][1]*b.a[1][0]%p)%p;
-		c.a[0][1]=(a[0][0]*b.a[0][1]%p+a[0][1]*b.a[1][1]%p)%p;
-		c.a[1][0]=(a[1][0]*b.a[0][0]%p+a[1][1]*b.a[1][0]%p)%p;
-		c.a[1][1]=(a[1][0]*b.a[0][1]%p+a[1][1]*b.a[1][1]%p)%p;
+		c.a[0][0]=(1LL*a[0][0]*b.a[0][0]%p+1LL*a[0][1]*b.a[1][0]%p)%p;
+		c.a[0][1]=(1LL*a[0][0]*b.a[0][1]%p+1LL*a[0][1]*b.a[1][1]%p)%p;
+		c.a[1][0]=(1LL*a[1][0]*b.a[0][0]%p+1LL*a[1][1]*b.a[1][0]%p)%p;
+		c.a[1][1]=(1LL*a[1][0]*b.a[0][1]%p+1LL*a[1][1]*b.a[1][1]%p)%p;
 		return c;
 	}
 };
-int quick(int a,int b,__int128 n,int x0,int x1){
+int quick(int a,int b,LL n,int x0,int x1){
 	node res,x;
 	res.a[0][0]=res.a[1][1]=1;
 	x.a[0][0]=0;
@@ -72,7 +74,7 @@ int quick(int a,int b,__int128 n,int x0,int x1){
 		n>>=1;
 		x=x*x;
 	}
-	return (res.a[0][1]*x0%p+res.a[1][1]*x1%p)%p;
+	return (1LL*res.a[0][1]*x0%p+1LL*res.a[1][1]*x1%p)%p;
 }
 int main(){
 	int x0,x1,a,b;
@@ -83,9 +85,7 @@ int main(){
 	/**for(int i=n.len-1;i>=0;i--)
 		printf("%d ",n.a[i]);
 	puts("");**/
-	__int128 tp=p;
-	__int128 k=n%(tp*tp-1);
-	//cout<<k<<endl;
+	LL k=n%(1LL*p*p-1);
 	printf("%d\n",quick(a,b,k,x0,x1));
 	return 0;
 }

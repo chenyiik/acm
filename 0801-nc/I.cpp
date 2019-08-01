@@ -69,6 +69,7 @@ int main()
         cin>>w>>h>>a>>b>>c;
         if (dcmp(a+b-c)==0)
         {
+            if (c<w) swap(w,h);
             point p1(0,0);
             point p2(a/sqrt(sqr(w)+sqr(h))*w,a/sqrt(sqr(w)+sqr(h))*h);
             point p3(c/sqrt(sqr(w)+sqr(h))*w,c/sqrt(sqr(w)+sqr(h))*h);
@@ -76,6 +77,7 @@ int main()
         }
         if (dcmp(a+c-b)==0)
         {
+            if (b<w) swap(w,h);
             point p1(0,0);
             point p2(a/sqrt(sqr(w)+sqr(h))*w,a/sqrt(sqr(w)+sqr(h))*h);
             point p3(b/sqrt(sqr(w)+sqr(h))*w,b/sqrt(sqr(w)+sqr(h))*h);
@@ -83,6 +85,7 @@ int main()
         }
         if (dcmp(b+c-a)==0)
         {
+            if (a<w) swap(w,h);
             point p1(0,0);
             point p2(b/sqrt(sqr(w)+sqr(h))*w,b/sqrt(sqr(w)+sqr(h))*h);
             point p3(a/sqrt(sqr(w)+sqr(h))*w,a/sqrt(sqr(w)+sqr(h))*h);

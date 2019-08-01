@@ -1,4 +1,7 @@
-#include<bits/stdc++.h>
+//#include<bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <cstring>
 #define M 1000005
 #define LL long long
 using namespace std;

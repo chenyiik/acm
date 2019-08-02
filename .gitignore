@@ -4,5 +4,6 @@ cmake
 *.class
 *.out
 *.o
+*.swp
 open.sh
 open2.sh

@@ -28,8 +28,8 @@ LL c[maxn][maxn], ans[maxn], tot[maxn];
 LL f(LL i)
 {
 	if (ans[i] > -1) return ans[i];
-	LL p = 0;
-	for (int j = 0; j < i; j++)
+	LL p = i * (i - 1) * pow_mod(2, i - 2) % mod;
+	for (int j = 1; j < i; j++)
 		p = (p + c[i][j] * f(j)) % mod;
 	LL q = inv((pow_mod(2, i) - 1 + mod) % mod);
 	return ans[i] = p * q % mod;
@@ -44,7 +44,7 @@ void init()
 			c[i][j] = (c[i - 1][j - 1] + c[i - 1][j]) % mod;
 	}
 	memset(ans, -1, sizeof(ans));
-	ans[0] = 0, ans[1] = 1, f(3000);
+	ans[0] = ans[1] = 0, f(3000);
 	for (int i = 1; i <= 3000; i++)
 		tot[i] = (tot[i - 1] + ans[i]) % mod;
 }
@@ -53,7 +53,6 @@ int main()
 {
 	init();
 	LL n;
-	cout << inv(6) << endl;
 	while (~scanf("%lld", &n))
 		printf("%lld\n", tot[n] * inv(n) % mod);
 	return 0;

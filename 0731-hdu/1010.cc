@@ -38,8 +38,6 @@ int m;
 
 int f(LL n)
 {
-	if (n <= 1e6 && !vis[n])
-		return 1;
 	int ans = 0x7fffffff;
 	for (int i = 0; n > 1 && i < m; i++)
 		if (n % a[i] == 0)
@@ -54,13 +52,21 @@ int f(LL n)
 	if (n == 1)
 		return ans;
 	LL k = (LL)sqrt(n + 0.5);
-	return k * k == n ? 2 : 1;
+	if (k * k == n)
+	{
+		LL kk = (LL)sqrt(k + 0.5);
+		return (kk * kk == k) ? 4 : 2;
+	}
+	k = LL(pow(n, 1.0/3) + 1e-9);
+	if (k * k * k == n)
+		return 3;
+	k = LL(pow(n, 1.0/5) + 1e-9);
+	return k * k * k * k * k == n ? 5 : 1;
 }
 
 int main()
 {
 	m = gen_primes(int(3982));
-	cout << m << endl;
 	int t;
 	scanf("%d", &t);
 	while (t--)

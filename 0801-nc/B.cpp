@@ -1,55 +1,10 @@
 #include<cstdio>
-#include<iostream>
 #include<cstring>
 #define M 1000005
 #define LL long long
 using namespace std;
 int p;
-class BigNum{
-	public:
-		int a[M>>1];
-		int len;
-		BigNum(){len=1;memset(a,0,sizeof(a));}
-		friend istream& operator>>(istream&,BigNum&);
-	LL operator% (const LL &b)const{
-		int i;
-		LL d=0;
-		cout<<b<<endl;
-		for(i=len-1;i>=0;i--)
-			d=((d*10000)%b+a[i])%b;
-		return d;
-	}
-	void mns(){
-		int i;
-		a[0]--;
-		for(i=0;i<len;i++){
-			if(a[i]<0){
-				a[i+1]--;
-				a[i]+=10000;
-			}else{
-				break;
-			}
-		}
-		if(a[len-1]==0)len--;
-	}
-};
-char ch[M];
-istream& operator>>(istream &in,BigNum &b){
-	int i=-1;
-	in>>ch;
-	int L=strlen(ch);
-	int count=0,sum=0;
-	for(i=L-1;i>=0;){
-		sum=0;
-		int t=1;
-		for(int j=0;j<4&&i>=0;j++,i--,t*=10)
-			sum+=(ch[i]-'0')*t;
-		b.a[count]=sum;
-		count++;
-	}
-	b.len=count++;
-	return in;
-}
+char str[M];
 struct node{
 	LL a[2][2];
 	node(){a[0][0]=a[0][1]=a[1][0]=a[1][1]=0;}
@@ -62,48 +17,30 @@ struct node{
 		return c;
 	}
 };
-int quick(int a,int b,LL n,int x0,int x1){
-	node res,x;
+node quick(node x,int a){
+	node res;
 	res.a[0][0]=res.a[1][1]=1;
-	x.a[0][0]=0;
-	x.a[0][1]=a;
-	x.a[1][0]=1;
-	x.a[1][1]=b;
-	while(n>0){
-		if(n&1)res=x*res;
-		n>>=1;
+	while(a>0){
+		if(a&1)res=x*res;
+		a>>=1;
 		x=x*x;
 	}
-	return (1LL*res.a[0][1]*x0%p+1LL*res.a[1][1]*x1%p)%p;
+	return res;
 }
 int main(){
-	int x0,x1,a,b;
-	scanf("%d %d %d %d",&x0,&x1,&b,&a);
-	BigNum n;
-	cin>>n>>p;
-	n.mns();
-	for(int i=n.len-1;i>=0;i--)
-		printf("%d ",n.a[i]);
-	puts("");
-	LL k=n%(1LL*p*p-1);
-	cout<<k<<endl;
-	printf("%d\n",quick(a,b,k,x0,x1));
+	int i,x0,x1,a,b,len;
+	scanf("%d %d %d %d %s %d",&x0,&x1,&b,&a,str,&p);
+	len=strlen(str);
+	node ori;
+	ori.a[0][1]=a;
+	ori.a[1][0]=1;
+	ori.a[1][1]=b;
+	node ans;
+	ans.a[0][0]=ans.a[1][1]=1;
+	for(i=0;i<len;i++){
+		ans=quick(ans,10);
+		ans=ans*quick(ori,str[i]^48);
+	}
+	printf("%d\n",(int)((1LL*x0*ans.a[0][0]%p+1LL*x1*ans.a[1][0]%p)%p));
 	return 0;
 }
-/*
-def multi(a,b,p):
-	c=(((a[0][0]*b[0][0]+a[0][1]*b[1][0])%p,(a[0][0]*b[0][1]+a[0][1]*b[1][1])%p),((a[1][0]*b[0][0]+a[1][1]*b[1][0])%p,(a[1][0]*b[0][1]+a[1][1]*b[1][1])%p))
-	return c
-def quick(x,a,p):
-	res=((1,0),(0,1))
-	while(a>0):
-		if(a&1):
-			res=multi(x,res,p)
-		a>>=1
-		x=multi(x,x,p)
-	return res
-x0,x1,b,a=map(int,input("").split())
-n,p=map(int,input("").split())
-ans=quick(((0,a),(1,b)),(n-1)%(p*p-1),p)
-print((x0*ans[0][1]+x1*ans[1][1])%p)
-*/

@@ -24,19 +24,19 @@
 
 |  | [0722](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+1&source=1&searchmode=source) | [0724](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+2&source=1&searchmode=source) | [0729](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+3&source=1&searchmode=source) | [0731](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+4&source=1&searchmode=source) | [0805](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+5&source=1&searchmode=source) | [0807](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+6&source=1&searchmode=source) | [0812](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+7&source=1&searchmode=source) | [0814](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+8&source=1&searchmode=source) | [0819](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+9&source=1&searchmode=source) | [0821](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+10&source=1&searchmode=source) |
 | :--: | :-----: | :-----: | :-----: | :-----: | :--: | :--: | :--: | :--: | :--: | :--: |
-| 1001 |[509](http://acm.hdu.edu.cn/showproblem.php?pid=6578)  | 18   | 55   |         | - | - | - | - | - | - |
-| 1002 |[848](http://acm.hdu.edu.cn/showproblem.php?pid=6579) |170  |256 |  9   | - | - | - | - | - | - |
-| 1003 | 43   | 19   | 32   |[314](http://acm.hdu.edu.cn/showproblem.php?pid=6616) | - | - | - | - | - | - |
-| 1004 |         |  8   |[363](http://acm.hdu.edu.cn/showproblem.php?pid=6606)  |  0   | - | - | - | - | - | - |
-| 1005 |         |         | 49   | 18   | - | - | - | - | - | - |
-| 1006 |230  | 54  |         | 51  | - | - | - | - | - | - |
-| 1007 | 48   | 34   |         |         | - | - | - | - | - | - |
-| 1008 |  8   |[395](http://acm.hdu.edu.cn/showproblem.php?pid=6598)  |186  |         | - | - | - | - | - | - |
-| 1009 |[653](http://acm.hdu.edu.cn/showproblem.php?pid=6586)  |[383](http://acm.hdu.edu.cn/showproblem.php?pid=6599) |[572](http://acm.hdu.edu.cn/showproblem.php?pid=6610)  |  3   | - | - | - | - | - | - |
-| 1010 | 40   |         | 31  |         | - | - | - | - | - | - |
-| 1011 |225  |         |113  |    -    | - | - | - | - | - | - |
-| 1012 |160  |[568](http://acm.hdu.edu.cn/showproblem.php?pid=6602) |    -    |    -    | - | - | - | - | - | - |
-| 1013 |290  |    -    |    -    |    -    | - | - | - | - | - | - |
+| 1001 |[524](http://acm.hdu.edu.cn/showproblem.php?pid=6578)  | 19  | 55   |         | - | - | - | - | - | - |
+| 1002 |[868](http://acm.hdu.edu.cn/showproblem.php?pid=6579) |179  |275 |  14  | - | - | - | - | - | - |
+| 1003 | 44  | 19   | 35  |[362](http://acm.hdu.edu.cn/showproblem.php?pid=6616) | - | - | - | - | - | - |
+| 1004 |         |  8   |[393](http://acm.hdu.edu.cn/showproblem.php?pid=6606)  |  0   | - | - | - | - | - | - |
+| 1005 |         |         | 49   | 26  | - | - | - | - | - | - |
+| 1006 |234  | 55 |         | 55 | - | - | - | - | - | - |
+| 1007 | 49  | 35 |         |         | - | - | - | - | - | - |
+| 1008 |  9   |[403](http://acm.hdu.edu.cn/showproblem.php?pid=6598)  |200  |         | - | - | - | - | - | - |
+| 1009 |[669](http://acm.hdu.edu.cn/showproblem.php?pid=6586)  |[397](http://acm.hdu.edu.cn/showproblem.php?pid=6599) |[598](http://acm.hdu.edu.cn/showproblem.php?pid=6610)  |  3   | - | - | - | - | - | - |
+| 1010 | 40   |         | 33 |         | - | - | - | - | - | - |
+| 1011 |226  |         |127  |    -    | - | - | - | - | - | - |
+| 1012 |171  |[582](http://acm.hdu.edu.cn/showproblem.php?pid=6602) |    -    |    -    | - | - | - | - | - | - |
+| 1013 |295  |    -    |    -    |    -    | - | - | - | - | - | - |
 
 #### contest number - problem set number
 

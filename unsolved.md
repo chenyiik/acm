@@ -9,7 +9,7 @@
 |  E   |      | 272 |  3   |  95  | 167  | 209 | - | - | - | - |
 |  F   |      |      |      |  41  |      |  17  | - | - | - | - |
 |  G   |  35  |  57  | [371](https://ac.nowcoder.com/acm/contest/883/G) |  17  |      | 299 | - | - | - | - |
-|  H   |      |      |      |  6   | [472](https://ac.nowcoder.com/acm/contest/885/H) |  37  | - | - | - | - |
+|  H   |      |      |      |  6   |  |  37  | - | - | - | - |
 |  I   | [365](https://ac.nowcoder.com/acm/contest/881/I) |  36  | 107 | [338](https://ac.nowcoder.com/acm/contest/884/I) |      |  14  | - | - | - | - |
 |  J   |      |      |      |      |  16  |      | - | - | - | - |
 |  K   |  -   |  -   |  -   |      |  -   |  -   | - | - | - | - |

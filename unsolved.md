@@ -3,10 +3,10 @@
 |   | [0718](https://ac.nowcoder.com/acm/contest/881#countdown) | [0720](https://ac.nowcoder.com/acm/contest/882#countdown) | [0725](https://ac.nowcoder.com/acm/contest/883#countdown) | [0727](https://ac.nowcoder.com/acm/contest/884#countdown) |[0801](https://ac.nowcoder.com/acm/contest/885#countdown)|[0803](https://ac.nowcoder.com/acm/contest/886#countdown)| [0808](https://ac.nowcoder.com/acm/contest/887#countdown) | [0810](https://ac.nowcoder.com/acm/contest/888#countdown) | [0815](https://ac.nowcoder.com/acm/contest/889#countdown) | [0817](https://ac.nowcoder.com/acm/contest/890#countdown) |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
 |  A   |      |      | 218 |      |      |      | - | - | - | - |
-|  B   |      | 298 |      | [471](https://ac.nowcoder.com/acm/contest/884/B) |      |      | - | - | - | - |
+|  B   |      | [300](https://ac.nowcoder.com/acm/contest/882/B) |      | [471](https://ac.nowcoder.com/acm/contest/884/B) |      |      | - | - | - | - |
 |  C   |      |  11  |  26  |      | 212 |  142  | - | - | - | - |
 |  D   |  85  |      |  |  |  16  |      | - | - | - | - |
-|  E   |      | 272 |  3   |  95  | 167  | 217 | - | - | - | - |
+|  E   |      | 275 |  3   |  95  | 167  |  | - | - | - | - |
 |  F   |      |      |      |  41  |      |  20  | - | - | - | - |
 |  G   |  35  |  57  | [371](https://ac.nowcoder.com/acm/contest/883/G) |  17  |      | [333](https://ac.nowcoder.com/acm/contest/886/G) | - | - | - | - |
 |  H   |      |      |      |  6   |  |  42  | - | - | - | - |

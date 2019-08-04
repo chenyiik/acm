@@ -8,7 +8,7 @@
 |  D   |  85  |      |  |  |  16  |      | - | - | - | - |
 |  E   |      | 275 |  3   |  95  | 167  |  | - | - | - | - |
 |  F   |      |      |      |  41  |      |  20  | - | - | - | - |
-|  G   |  35  |  57  | [371](https://ac.nowcoder.com/acm/contest/883/G) |  17  |      | [333](https://ac.nowcoder.com/acm/contest/886/G) | - | - | - | - |
+|  G   |  35  |  57  |  |  17  |      |  | - | - | - | - |
 |  H   |      |      |      |  6   |  |  42  | - | - | - | - |
 |  I   | [365](https://ac.nowcoder.com/acm/contest/881/I) |  36  | 107 | [338](https://ac.nowcoder.com/acm/contest/884/I) |      |  19  | - | - | - | - |
 |  J   |      |      |      |      |  16  |      | - | - | - | - |

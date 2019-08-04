@@ -20,9 +20,9 @@
 
 ## hdu
 
-#### [ProblemSet](http://acm.hdu.edu.cn/listproblem.php?vol=1) ac
+#### ProblemSet ac
 
-|  |  0722   |  0724   |  0729   |  0731   | 0805 | 0807 | 0812 | 0814 | 0819 | 0821 |
+|  | [0722](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+1&source=1&searchmode=source) | [0724](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+2&source=1&searchmode=source) | [0729](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+3&source=1&searchmode=source) | [0731](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+4&source=1&searchmode=source) | [0805](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+5&source=1&searchmode=source) | [0807](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+6&source=1&searchmode=source) | [0812](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+7&source=1&searchmode=source) | [0814](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+8&source=1&searchmode=source) | [0819](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+9&source=1&searchmode=source) | [0821](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+10&source=1&searchmode=source) |
 | :--: | :-----: | :-----: | :-----: | :-----: | :--: | :--: | :--: | :--: | :--: | :--: |
 | 1001 |[509](http://acm.hdu.edu.cn/showproblem.php?pid=6578)  | 18   | 55   |         | - | - | - | - | - | - |
 | 1002 |[848](http://acm.hdu.edu.cn/showproblem.php?pid=6579) |170  |256 |  9   | - | - | - | - | - | - |
@@ -40,7 +40,7 @@
 
 #### contest number - problem set number
 
-|  |  0722   |  0724   |  0729   |  0731   | 0805 | 0807 | 0812 | 0814 | 0819 | 0821 |
+|  | [0722](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+1&source=1&searchmode=source) | [0724](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+2&source=1&searchmode=source) | [0729](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+3&source=1&searchmode=source) | [0731](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+4&source=1&searchmode=source) | [0805](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+5&source=1&searchmode=source) | [0807](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+6&source=1&searchmode=source) | [0812](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+7&source=1&searchmode=source) | [0814](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+8&source=1&searchmode=source) | [0819](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+9&source=1&searchmode=source) | [0821](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+10&source=1&searchmode=source) |
 | :--: | :-----: | :-----: | :-----: | :-----: | :--: | :--: | :--: | :--: | :--: | :--: |
 | 1001 | 6578 | 6591 | 6603 | 6614 | - | - | - | - | - | - |
 | 1002 | 6579 | 6592 | 6604 | 6615 | - | - | - | - | - | - |

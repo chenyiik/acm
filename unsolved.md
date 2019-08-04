@@ -32,7 +32,7 @@
 | 1006 |234  | 55 |         | 55 | - | - | - | - | - | - |
 | 1007 | 49  | 35 |         |         | - | - | - | - | - | - |
 | 1008 |  9   |[403](http://acm.hdu.edu.cn/showproblem.php?pid=6598)  |200  |         | - | - | - | - | - | - |
-| 1009 |[669](http://acm.hdu.edu.cn/showproblem.php?pid=6586)  |[397](http://acm.hdu.edu.cn/showproblem.php?pid=6599) |[598](http://acm.hdu.edu.cn/showproblem.php?pid=6610)  |  3   | - | - | - | - | - | - |
+| 1009 |[669](http://acm.hdu.edu.cn/showproblem.php?pid=6586)  |[397](http://acm.hdu.edu.cn/showproblem.php?pid=6599) |[599](http://acm.hdu.edu.cn/showproblem.php?pid=6611)  |  3   | - | - | - | - | - | - |
 | 1010 | 40   |         | 33 |         | - | - | - | - | - | - |
 | 1011 |226  |         |127  |    -    | - | - | - | - | - | - |
 | 1012 |171  |[582](http://acm.hdu.edu.cn/showproblem.php?pid=6602) |    -    |    -    | - | - | - | - | - | - |

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int maxn = int(1e4) + 5, maxm = 30;
+const int maxn = int(1e5) + 5, maxm = 30;
 vector<int> G[maxm]; bool vis[maxm];
 char t[5], s[maxn], ans[maxn];
 vector<int> U[maxn], V[maxn];
@@ -66,7 +66,7 @@ int main()
 		while (top)
 		{
 			int u = S[--top];
-			if (U[u].size() == tot[u])
+			if ((int)U[u].size() == tot[u])
 			{
 				if (nod == -1)
 					nod = u;

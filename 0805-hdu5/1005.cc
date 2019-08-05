@@ -9,10 +9,10 @@ using namespace std;
 struct P
 {
 	int vis, last, size;
-	int d[20];
+	int d[21];
 	bool operator<(const P &o) const
 	{
-		for (int i = 1; i < 20; i++)
+		for (int i = 1; i <= 20; i++)
 			if (d[i] > o.d[i])
 				return true;
 		return false;
@@ -30,15 +30,16 @@ int main()
 		int n, k;
 		scanf("%d%d", &n, &k);
 		priority_queue<P> Q;
+		P p;
+		p.size = 2;
+		memset(p.d, 0x80, sizeof(p.d));
 		for (int i = 1; i <= n; i++)
 			for (int j = 1; j <= n; j++)
 				if (i != j)
 				{
-					P p;
 					p.vis = (1 << i) | (1 << j);
 					p.last = j;
-					p.size = 2;
-					p.d[1] = i - j;
+					p.d[1] = j - i;
 					Q.push(p);
 				}
 		while (true)
@@ -53,8 +54,7 @@ int main()
 				break;
 			}
 			P q;
-			for (int i = 1; i < p.size; i++)
-				q.d[i] = p.d[i];
+			memcpy(q.d, p.d, sizeof(p.d));
 			q.size = p.size + 1;
 			for (int i = 1; i <= n; i++)
 				if (0 == ((1 << i) & p.vis))

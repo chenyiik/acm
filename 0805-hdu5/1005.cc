@@ -3,36 +3,39 @@
 #include <iostream>
 #include <queue>
 #include <vector>
+#include <set>
 
 using namespace std;
 
 struct P
 {
 	int vis, last, size;
-	int d[21];
-	bool operator<(const P &o) const
+	int d[30];
+};
+
+int ans[30], n, k, t;
+
+struct cmp
+{
+	bool operator()(const P &a, const P &b) const
 	{
-		for (int i = 1; i <= 20; i++)
-			if (d[i] > o.d[i])
-				return true;
-		return false;
+		for (int i = 1; i < min(a.size, b.size); i++)
+			if (a.d[i] != b.d[i])
+				return a.d[i] > b.d[i];
+		return a.size > b.size;
 	}
 };
 
-int ans[21];
-
 int main()
 {
-	int t;
 	scanf("%d", &t);
 	while (t--)
 	{
-		int n, k;
 		scanf("%d%d", &n, &k);
-		priority_queue<P> Q;
+		priority_queue<P, vector<P>, cmp> Q;
 		P p;
 		p.size = 2;
-		memset(p.d, 0x80, sizeof(p.d));
+		memset(p.d, 0x7f, sizeof(p.d));
 		for (int i = 1; i <= n; i++)
 			for (int j = 1; j <= n; j++)
 				if (i != j)
@@ -46,6 +49,7 @@ int main()
 		{
 			P p = Q.top();
 			Q.pop();
+			ans[p.size] = p.last;
 			if (p.size == n && --k == 0)
 			{
 				ans[n] = p.last;
@@ -60,7 +64,7 @@ int main()
 				if (0 == ((1 << i) & p.vis))
 				{
 					q.vis = p.vis | (1 << i);
-					q.d[p.size] = i - p.last;
+					q.d[q.size - 1] = i - p.last;
 					q.last = i;
 					Q.push(q);
 				}

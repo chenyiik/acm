@@ -3,15 +3,15 @@
 | [log](https://docs.qq.com/sheet/DWW9aU2VObHV2a2ph?preview_token=&tab=BB08J2&coord=A1A0A0) | [0718](https://ac.nowcoder.com/acm/contest/881#countdown) | [0720](https://ac.nowcoder.com/acm/contest/882#countdown) | [0725](https://ac.nowcoder.com/acm/contest/883#countdown) | [0727](https://ac.nowcoder.com/acm/contest/884#countdown) |[0801](https://ac.nowcoder.com/acm/contest/885#countdown)|[0803](https://ac.nowcoder.com/acm/contest/886#countdown)| [0808](https://ac.nowcoder.com/acm/contest/887#countdown) | [0810](https://ac.nowcoder.com/acm/contest/888#countdown) | [0815](https://ac.nowcoder.com/acm/contest/889#countdown) | [0817](https://ac.nowcoder.com/acm/contest/890#countdown) |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
 |  A   |      |      | 219 |      |      |      | - | - | - | - |
-|  B   |      | [302](https://ac.nowcoder.com/acm/contest/882/B) |      | [486](https://ac.nowcoder.com/acm/contest/884/B) |      |      | - | - | - | - |
-|  C   |      |  11  |  26  |      | 260 |  155  | - | - | - | - |
-|  D   |  80  |      |  |  |  21  |      | - | - | - | - |
-|  E   |      | 278 |  3   |  99  | 186 |  | - | - | - | - |
-|  F   |      |      |      |  45  |      |  24  | - | - | - | - |
-|  G   |  35  |  57  |  |  18  |      |  | - | - | - | - |
-|  H   |      |      |      |  6   |  |  58  | - | - | - | - |
-|  I   | [367](https://ac.nowcoder.com/acm/contest/881/I) |  36  | 111 | [343](https://ac.nowcoder.com/acm/contest/884/I) |      |  25  | - | - | - | - |
-|  J   |      |      |      |      |  30  |      | - | - | - | - |
+|  B   |      | [302](https://ac.nowcoder.com/acm/contest/882/B) |      | [492](https://ac.nowcoder.com/acm/contest/884/B) |      |      | - | - | - | - |
+|  C   |      |  11  |  26  |      | 268 |  171  | - | - | - | - |
+|  D   |  80  |      |  |  |  26  |      | - | - | - | - |
+|  E   |      | 278 |  3   |  99  | 199 |  | - | - | - | - |
+|  F   |      |      |      |  45  |      |  33  | - | - | - | - |
+|  G   |  35  |  57  |  |  20  |      |  | - | - | - | - |
+|  H   |      |      |      |  6   |  |  73  | - | - | - | - |
+|  I   | [367](https://ac.nowcoder.com/acm/contest/881/I) |  36  | 111 | [352](https://ac.nowcoder.com/acm/contest/884/I) |      |  29  | - | - | - | - |
+|  J   |      |      |      |      |  34  |      | - | - | - | - |
 |  K   |  -   |  -   |  -   |      |  -   |  -   | - | - | - | - |
 
 ---
@@ -22,16 +22,16 @@
 
 | [log](https://docs.qq.com/sheet/DWW9aU2VObHV2a2ph?preview_token=&tab=BB08J2&coord=A1A0A0) | [0722](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+1&source=1&searchmode=source) | [0724](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+2&source=1&searchmode=source) | [0729](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+3&source=1&searchmode=source) | [0731](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+4&source=1&searchmode=source) | [0805](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+5&source=1&searchmode=source) | [0807](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+6&source=1&searchmode=source) | [0812](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+7&source=1&searchmode=source) | [0814](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+8&source=1&searchmode=source) | [0819](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+9&source=1&searchmode=source) | [0821](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+10&source=1&searchmode=source) |
 | :--: | :-----: | :-----: | :-----: | :-----: | :--: | :--: | :--: | :--: | :--: | :--: |
-| 1001 |[526](http://acm.hdu.edu.cn/showproblem.php?pid=6578)  | 19  | 56  |         | - | - | - | - | - | - |
-| 1002 |[879](http://acm.hdu.edu.cn/showproblem.php?pid=6579) |182  |284 |  14  | - | - | - | - | - | - |
-| 1003 | 44  | 19   | 36 |[377](http://acm.hdu.edu.cn/showproblem.php?pid=6616) | - | - | - | - | - | - |
-| 1004 |         |  8   |[402](http://acm.hdu.edu.cn/showproblem.php?pid=6606)  |  0   | - | - | - | - | - | - |
-| 1005 |         |         | 53  | 27 | - | - | - | - | - | - |
-| 1006 |237  | 57 |         | 57 | - | - | - | - | - | - |
-| 1007 | 51 | 35 |         |         | - | - | - | - | - | - |
-| 1008 |  9   |[403](http://acm.hdu.edu.cn/showproblem.php?pid=6598)  |202  |         | - | - | - | - | - | - |
-| 1009 |[671](http://acm.hdu.edu.cn/showproblem.php?pid=6586)  |[400](http://acm.hdu.edu.cn/showproblem.php?pid=6599) |[607](http://acm.hdu.edu.cn/showproblem.php?pid=6611)  |  3   | - | - | - | - | - | - |
-| 1010 | 41  |         | 34 |         | - | - | - | - | - | - |
+| 1001 |[526](http://acm.hdu.edu.cn/showproblem.php?pid=6578)  | 19  | 56  |         | 6 | - | - | - | - | - |
+| 1002 |[879](http://acm.hdu.edu.cn/showproblem.php?pid=6579) |182  |284 |  14  | 27 | - | - | - | - | - |
+| 1003 | 44  | 19   | 36 |[384](http://acm.hdu.edu.cn/showproblem.php?pid=6616) | 4 | - | - | - | - | - |
+| 1004 |         |  8   |[402](http://acm.hdu.edu.cn/showproblem.php?pid=6606)  |  10  |  | - | - | - | - | - |
+| 1005 |         |         | 53  | 27 |  | - | - | - | - | - |
+| 1006 |237  | 57 |         | 60 |  | - | - | - | - | - |
+| 1007 | 51 | 35 |         |         |  | - | - | - | - | - |
+| 1008 |  9   |[403](http://acm.hdu.edu.cn/showproblem.php?pid=6598)  |202  |         | 6 | - | - | - | - | - |
+| 1009 |[671](http://acm.hdu.edu.cn/showproblem.php?pid=6586)  |[400](http://acm.hdu.edu.cn/showproblem.php?pid=6599) |[607](http://acm.hdu.edu.cn/showproblem.php?pid=6611)  |  3   | 4 | - | - | - | - | - |
+| 1010 | 41  |         | 34 |         | 3 | - | - | - | - | - |
 | 1011 |226  |         |129  |    -    | - | - | - | - | - | - |
 | 1012 |171  |[585](http://acm.hdu.edu.cn/showproblem.php?pid=6602) |    -    |    -    | - | - | - | - | - | - |
 | 1013 |295  |    -    |    -    |    -    | - | - | - | - | - | - |

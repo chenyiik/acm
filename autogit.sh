@@ -1,4 +1,3 @@
-git add . 
-git commit -m 'none'
+git commit -am 'none'
 git pull origin master
 git push origin master 

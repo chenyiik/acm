@@ -59,7 +59,6 @@ int main()
     read(T);
     while (T--)
     {
-		fprintf(stderr, "%d\n", T);
         read(n);
         a.tot=0,b.tot=0;
         a_raw.clear();

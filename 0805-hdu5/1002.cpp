@@ -1,9 +1,4 @@
-#include<cstdio>
-#include<iostream>
-#include<vector>
-#include<set>
-#include<cctype>
-#include<algorithm>
+#include<bits/stdc++.h>
 using namespace std;
 int n;
 void read(int& p)
@@ -15,12 +10,12 @@ void read(int& p)
 }
 struct bintree
 {
-    int tree[3100050][2],cnt[3100050][2],val[3100050];
+    int tree[3000050][2],cnt[3000050][2],val[3000050];
     int tot;
     void add(int x)
     {
         int cur=0;
-        for(int i=30;i>=0;i--)
+        for(int i=29;i>=0;i--)
         {
             int y=(x>>i)&1;
             if(!tree[cur][y]) {tree[cur][y]=++tot;memset(tree[tot],0,sizeof(tree[tot]));cnt[cur][y]=0;}
@@ -32,7 +27,7 @@ struct bintree
     int query(int x)
     {
         int cur=0;
-        for(int i=30;i>=0;i--)
+        for(int i=29;i>=0;i--)
         {
             int y=(x>>i)&1;
             if (cnt[cur][y]==0) y^=1;
@@ -43,7 +38,7 @@ struct bintree
     void del(int x)
     {
         int cur=0;
-        for(int i=30;i>=0;i--)
+        for(int i=29;i>=0;i--)
         {
             int y=(x>>i)&1;
             if (cnt[cur][y]==0) y^=1;

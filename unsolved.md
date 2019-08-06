@@ -40,16 +40,16 @@
 
 |  | [0722](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+1&source=1&searchmode=source) | [0724](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+2&source=1&searchmode=source) | [0729](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+3&source=1&searchmode=source) | [0731](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+4&source=1&searchmode=source) | [0805](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+5&source=1&searchmode=source) | [0807](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+6&source=1&searchmode=source) | [0812](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+7&source=1&searchmode=source) | [0814](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+8&source=1&searchmode=source) | [0819](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+9&source=1&searchmode=source) | [0821](http://acm.hdu.edu.cn/search.php?field=problem&key=2019+Multi-University+Training+Contest+10&source=1&searchmode=source) |
 | :--: | :-----: | :-----: | :-----: | :-----: | :--: | :--: | :--: | :--: | :--: | :--: |
-| 1001 | 6578 | 6591 | 6603 | 6614 | - | - | - | - | - | - |
-| 1002 | 6579 | 6592 | 6604 | 6615 | - | - | - | - | - | - |
-| 1003 | 6580 | 6593 | 6605 | 6616 | - | - | - | - | - | - |
-| 1004 | 6581 | 6594 | 6606 | 6617 | - | - | - | - | - | - |
-| 1005 | 6582 | 6595 | 6607 | 6618 | - | - | - | - | - | - |
-| 1006 | 6583 | 6596 | 6608 | 6619 | - | - | - | - | - | - |
-| 1007 | 6584 | 6597 | 6609 | 6620 | - | - | - | - | - | - |
-| 1008 | 6585 | 6598 | 6610 | 6621 | - | - | - | - | - | - |
-| 1009 | 6586 | 6599 | 6611 | 6622 | - | - | - | - | - | - |
-| 1010 | 6587 | 6600 | 6612 | 6623 | - | - | - | - | - | - |
+| 1001 | 6578 | 6591 | 6603 | 6614 | 6624 | - | - | - | - | - |
+| 1002 | 6579 | 6592 | 6604 | 6615 | 6625 | - | - | - | - | - |
+| 1003 | 6580 | 6593 | 6605 | 6616 | 6626 | - | - | - | - | - |
+| 1004 | 6581 | 6594 | 6606 | 6617 | 6627 | - | - | - | - | - |
+| 1005 | 6582 | 6595 | 6607 | 6618 | 6628 | - | - | - | - | - |
+| 1006 | 6583 | 6596 | 6608 | 6619 | 6629 | - | - | - | - | - |
+| 1007 | 6584 | 6597 | 6609 | 6620 | 6630 | - | - | - | - | - |
+| 1008 | 6585 | 6598 | 6610 | 6621 | 6631 | - | - | - | - | - |
+| 1009 | 6586 | 6599 | 6611 | 6622 | 6632 | - | - | - | - | - |
+| 1010 | 6587 | 6600 | 6612 | 6623 | 6633 | - | - | - | - | - |
 | 1011 | 6588 | 6601 | 6613 |    -    | - | - | - | - | - | - |
 | 1012 | 6589 | 6602 |    -    |    -    | - | - | - | - | - | - |
 | 1013 | 6590 |    -    |    -    |    -    | - | - | - | - | - | - |

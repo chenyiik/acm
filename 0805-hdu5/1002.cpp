@@ -1,20 +1,11 @@
-#include<bits/stdc++.h>
+#include<cstdio>
+#include<iostream>
+#include<vector>
+#include<set>
+#include<cctype>
+#include<algorithm>
 using namespace std;
-int a[100050],tree[3000050][2],cnt[3000050][2],val[3000050];
-int vis[3000050];
-int tot,n;
-int cas=0;
-struct xors
-{
-    int val;
-    int xs;
-    int raw;
-    bool operator <(const xors& b) const
-    {
-        return xs<b.xs;
-    }
-};
-xors c[100050];
+int n;
 void read(int& p)
 {
     char ch=getchar();int res=0;
@@ -22,113 +13,87 @@ void read(int& p)
     while (isdigit(ch)) {res=res*10+ch-'0';ch=getchar();}
     p=res;
 }
-void add(int x)
+struct bintree
 {
-    int cur=0;
-    for (int i=29;i>=0;i--)
+    int tree[3100050][2],cnt[3100050][2],val[3100050];
+    int tot;
+    void add(int x)
     {
-        if (vis[cur]!=cas) {cnt[cur][0]=cnt[cur][1]=0;vis[cur]=cas;}
-        int y=(x>>i)&1;
-        if (!tree[cur][y]) tree[cur][y]=++tot;
-        cnt[cur][y]++;
-        cur=tree[cur][y];
-    }
-    val[cur]=x;
-}
-int query(int x)
-{
-    int cur=0;
-    for (int i=29;i>=0;i--)
-    {
-        int y=(x>>i)&1;
-        //cout<<cur<<" "<<y<<endl;
-        if (cnt[cur][y])
+        int cur=0;
+        for(int i=30;i>=0;i--)
         {
+            int y=(x>>i)&1;
+            if(!tree[cur][y]) {tree[cur][y]=++tot;memset(tree[tot],0,sizeof(tree[tot]));cnt[cur][y]=0;}
+            cnt[cur][y]++;
+            cur=tree[cur][y];
+        }
+        val[cur]=x;
+    }
+    int query(int x)
+    {
+        int cur=0;
+        for(int i=30;i>=0;i--)
+        {
+            int y=(x>>i)&1;
+            if (cnt[cur][y]==0) y^=1;
+            cur=tree[cur][y];
+        }
+        return val[cur];
+    }
+    void del(int x)
+    {
+        int cur=0;
+        for(int i=30;i>=0;i--)
+        {
+            int y=(x>>i)&1;
+            if (cnt[cur][y]==0) y^=1;
             cnt[cur][y]--;
             cur=tree[cur][y];
         }
-        else
-        {
-            cnt[cur][y^1]--;
-            cur=tree[cur][y^1];
-        }
     }
-    return val[cur];
-}
-int query_nodel(int x)
-{
-    int cur=0;
-    for (int i=29;i>=0;i--)
+    void clear()
     {
-        int y=(x>>i)&1;
-        //cout<<cur<<" "<<y<<endl;
-        if (cnt[cur][y])
-        {
-            //cnt[cur][y]--;
-            cur=tree[cur][y];
-        }
-        else
-        {
-            //cnt[cur][y^1]--;
-            cur=tree[cur][y^1];
-        }
-    }
-    return val[cur];
-}
-struct tn
-{
-    int x,y,val;
-    bool operator<(const tn& b) const
-    {
-        return val>b.val;
+        memset(tree[0],0,sizeof(tree[0]));
     }
 };
-void spec()
-{
-    priority_queue<tn> pq;
-    int b[111];
-    bool used[111];
-    bool used2[111];
-    memset(used,0,sizeof(used));
-    memset(used2,0,sizeof(used2));
-    for (int i=1;i<=n;i++) read(b[i]);
-    for (int i=1;i<=n;i++)
-        for (int j=1;j<=n;j++) {int val=a[i]^b[j];tn nn;nn.x=i;nn.y=j;nn.val=val;pq.push(nn);}
-    int cx=0;
-    while (!pq.empty())
-    {
-        auto x=pq.top();pq.pop();
-        if (used[x.x]||used2[x.y]) continue;
-        printf("%d ",x.val);
-        cx++;
-        used[x.x]=used2[x.y]=1;
-        if (cx==n) break;
-    }
-    puts("");
-}
+bintree a,b;
+multiset<int> a_raw;
 int main()
 {
     int T;
     read(T);
     while (T--)
     {
-        ++cas;
         read(n);
-        for (int i=1;i<=n;i++) read(a[i]);
-        //if (n<=100) {spec();continue;}
-        tot=0;
+        a.tot=0,b.tot=0;
+        a_raw.clear();
+        a.clear(),b.clear();
         for (int i=1;i<=n;i++)
         {
-            int b;
-            read(b);
-            add(b);
+            int x;
+            read(x);
+            a.add(x);
+            a_raw.insert(x);
         }
-        for (int i=1;i<=n;i++) {c[i].raw=a[i];c[i].val=query_nodel(a[i]);c[i].xs=a[i]^c[i].val;}
-        sort(c+1,c+n+1);
-        for (int i=1;i<=n;i++)
+        for (int i=1;i<=n;i++) {int x;read(x);b.add(x);}
+        int u=*a_raw.begin(),v=b.query(u);
+        vector<int> ans;
+        while (ans.size()<n)
         {
-            printf("%d ",(c[i].raw^query(c[i].raw)));
+            int v1=a.query(v);
+            if (u==v1)
+            {
+                ans.push_back(u^v);
+                a_raw.erase(a_raw.find(u));
+                a.del(u);b.del(v);
+                u=*a_raw.begin();
+                v=b.query(u);
+                continue;
+            }
+            u=v1;
+            v=b.query(u);
         }
-        puts("");
+        sort(ans.begin(),ans.end());
+        for (int i=0;i<n;i++) printf("%d%c",ans[i]," \n"[i==n-1]);
     }
 }

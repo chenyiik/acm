@@ -72,13 +72,15 @@ int main()
         }
         for (int i=1;i<=n;i++) {int x;read(x);b.add(x);}
         int u=*a_raw.begin(),v=b.query(u);
-        vector<int> ans;
-        while (ans.size()<n)
+        int ans[100050];
+        int tt=0;
+        while (tt<n)
         {
             int v1=a.query(v);
             if (u==v1)
             {
-                ans.push_back(u^v);
+                tt++;
+                ans[tt]=u^v;
                 a_raw.erase(a_raw.find(u));
                 a.del(u);b.del(v);
                 u=*a_raw.begin();
@@ -88,7 +90,7 @@ int main()
             u=v1;
             v=b.query(u);
         }
-        sort(ans.begin(),ans.end());
-        for (int i=0;i<n;i++) printf("%d%c",ans[i]," \n"[i==n-1]);
+        sort(ans+1,ans+1+n);
+        for (int i=1;i<=n;i++) printf("%d%c",ans[i]," \n"[i==n]);
     }
 }

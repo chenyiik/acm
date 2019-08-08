@@ -56,9 +56,9 @@ namespace cyc
 			if (!s[0] || !s[1]) continue;
 			int x = x1 - x0, y = y1 - y0;
 			int k0 = lm[0], bt = ld[0], ts = x0 + y0 - bt; 
-			long long i0 = ts / k + int(ts % k), b0 = bt + k0 * i0 - x0 - y0;
+			long long i0 = ts / k0 + int(ts % k0), b0 = bt + k0 * i0 - x0 - y0;
 			int k1 = lm[1], bs = ld[1], tr = -x0 + y0 - bs; 
-			long long i1 = tr / k + int(tr % k), b1 = bs + k1 * i1 + x0 - y0;
+			long long i1 = tr / k1 + int(tr % k1), b1 = bs + k1 * i1 + x0 - y0;
 
 		}
 		printf("%lld\n", ans);

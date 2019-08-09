@@ -6,4 +6,6 @@ cmake
 *.o
 *.swp
 open.sh
-open2.sh
+CMakeLists.txt
+cmake-build-debug
+main.cpp

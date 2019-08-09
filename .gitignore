@@ -6,8 +6,7 @@ cmake
 *.o
 *.swp
 open.sh
-open2.sh
-.idea
 CMakeLists.txt
 cmake-build-debug
 main.cpp
+.idea

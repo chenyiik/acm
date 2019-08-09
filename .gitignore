@@ -2,7 +2,6 @@
 cmake
 *.exe
 *.class
-*.out
 *.o
 *.swp
 open.sh

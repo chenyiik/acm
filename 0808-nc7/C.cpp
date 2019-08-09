@@ -1,4 +1,8 @@
-#include<bits/stdc++.h>
+#include<cstdio>
+#include<cstring>
+#include<iostream>
+#include<algorithm>
+#include<unordered_map>
 #define LL long long
 #define M 100005
 #define SM 205

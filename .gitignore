@@ -9,3 +9,4 @@ open.sh
 CMakeLists.txt
 cmake-build-debug
 main.cpp
+.idea

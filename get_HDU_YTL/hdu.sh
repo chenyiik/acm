@@ -1,2 +1,2 @@
-gcc nowcoder.c -o nowcoder.exe
-python3 get_Nowcoder_YTL.py | ./nowcoder.exe > nowcoder.md
+gcc hdu.c -o hdu.exe
+python3 get_HDU_YTL.py | ./hdu.exe > hdu.md

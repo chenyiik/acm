@@ -5,8 +5,8 @@ int main()
 {
 	//freopen("nowcoder.txt", "r", stdin);
 	//freopen("nowcoder.md", "w", stdout);
-	FILE *file = fopen("nowcoder.ac", "r");
-	puts("## nowcoder");
+	FILE *file = fopen("hdu.ac", "r");
+	puts("## hdu");
 	static const int date[10] = {722, 724, 729, 731, 805, 807, 812, 814, 819, 821};
 	const int maxnu = 1013;
 	printf("| [log](https://docs.qq.com/sheet/DWW9aU2VObHV2a2ph?preview_token=&tab=BB08J2&coord=A1A0A0) |");
@@ -34,8 +34,10 @@ int main()
 				b = 0;
 				break;
 			}
-			if (strlen(st) > 1)
+			if (strlen(st) > 4)
 				break;
+			static char prob[10];
+			strcpy(prob, st);
 			scanf("%s", st);
 			fscanf(file, "%s", ac);
 			int num;
@@ -45,7 +47,7 @@ int main()
 			else if (num < 300)
 				printf(" %s |", st);
 			else
-				printf(" [%s](%s%d) |", st, url, d);
+				printf(" [%s](%s%s) |", st, url, prob);
 			d++;
 		}
 		while (d++ <= maxnu)

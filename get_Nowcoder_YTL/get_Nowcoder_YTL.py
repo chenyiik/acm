@@ -4,14 +4,15 @@ import time
 import csv
 import os
 from selenium import webdriver
+import selenium
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 try:
-	options = webdriver.FirefoxOptions()
-	options.add_argument("--headless")
-	driver = webdriver.Firefox(options=options)
+	options = selenium.webdriver.firefox.options.Options()
+	options.add_argument("-headless")
+	driver = webdriver.Firefox(executable_path='./geckodriver',options=options)
 except:
 	options = webdriver.ChromeOptions()
 	options.add_argument("--headless")

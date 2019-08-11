@@ -19,7 +19,7 @@ try:
 	for contest_id in range(881,891):
 		url="https://ac.nowcoder.com/acm/contest/{}#question".format(contest_id)
 		driver.get(url)
-		wait = WebDriverWait(driver, 10)
+		wait = WebDriverWait(driver, 15)
 		table = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'table-hover')))
 		table_rows = table.find_elements_by_tag_name("tr")
 		print(url)
@@ -32,3 +32,4 @@ except:
 	driver.close()
 else:
 	driver.close()
+print("EOF")

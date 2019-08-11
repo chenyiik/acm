@@ -5,8 +5,9 @@ int main()
 {
 	//freopen("nowcoder.txt", "r", stdin);
 	//freopen("nowcoder.md", "w", stdout);
+	FILE *file = fopen("nowcoder.ac", "r");
 	puts("## nowcoder");
-	static const int date[10] = {718, 720, 725, 727, 801, 803, 808, 810, 815, 817}, off = 881;
+	static const int date[10] = {718, 720, 725, 727, 801, 803, 808, 810, 815, 817};
 	const char maxch = 'K';
 	printf("| |");
 	for (char c = 'A'; c <= maxch; c++)
@@ -21,9 +22,14 @@ int main()
 	for (int i = 0; i < 10; i++)
 	{
 		printf("| [0%d](%s) |", date[i], st);
+		static char url[100];
+		strcpy(url, st);
+		for (int i = strlen(url) - 1; url[i] != '#'; i--)
+			url[i] = 0;
+		url[strlen(url) - 1] = '/';
 		char c = 'A';
 		int b;
-		while (b = ~scanf("%s", st))
+		while ((b = ~scanf("%s", st)))
 		{
 			if (strcmp(st, "EOF") == 0)
 			{
@@ -33,7 +39,12 @@ int main()
 			if (strlen(st) > 1)
 				break;
 			scanf("%s", st);
-			printf(" %s |", st);
+			int num;
+			sscanf(st, "%d", &num);
+			if (num < 300)
+				printf(" %s |", st);
+			else
+				printf(" [%s](%s%c) |", st, url, c);
 			c++;
 		}
 		while (c++ <= maxch)
@@ -42,4 +53,6 @@ int main()
 		if (b == 0)
 			break;
 	}
+	fclose(file);
+	return 0;
 }

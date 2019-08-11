@@ -21,6 +21,8 @@ int main()
 	scanf("%s", st);
 	for (int i = 0; i < 10; i++)
 	{
+		static char aa[30], ab[30], ac[30];
+		fscanf(file, "%s%s%s", aa, ab, ac);
 		printf("| [0%d](%s) |", date[i], st);
 		static char url[100];
 		strcpy(url, st);
@@ -41,7 +43,9 @@ int main()
 			scanf("%s", st);
 			int num;
 			sscanf(st, "%d", &num);
-			if (num < 300)
+			if (ac[c - 'A'] == '-')
+				printf(" |");
+			else if (num < 300)
 				printf(" %s |", st);
 			else
 				printf(" [%s](%s%c) |", st, url, c);

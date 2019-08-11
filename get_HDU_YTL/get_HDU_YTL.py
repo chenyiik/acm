@@ -25,7 +25,7 @@ def main():
 			print(url)
 			for i in range(1,len(table_rows)):
 				table_columns = table_rows[i].find_elements_by_tag_name("td")
-				str=table_columns[0].text+" "+table_columns[4].text.split("/")[0][1:]
+				str=table_columns[0].text+" "+table_columns[4].text.split("/")[0].split("(")[1]
 				print(str)
 			print("")
 	except:

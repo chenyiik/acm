@@ -11,7 +11,7 @@ int main()
 	const int maxnu = 1013;
 	printf("| [log](https://docs.qq.com/sheet/DWW9aU2VObHV2a2ph?preview_token=&tab=BB08J2&coord=A1A0A0) |");
 	for (int i = 1001; i <= 1013; i++)
-		printf(" %d |", i);
+		printf(" %d |", i - 1000);
 	puts("");
 	printf("| :-: |");
 	for (int i = 1001; i <= 1013; i++)

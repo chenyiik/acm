@@ -9,7 +9,7 @@ int main()
 	puts("## nowcoder");
 	static const int date[10] = {718, 720, 725, 727, 801, 803, 808, 810, 815, 817};
 	const char maxch = 'K';
-	printf("| |");
+	printf("| [log](https://docs.qq.com/sheet/DWW9aU2VObHV2a2ph?preview_token=&tab=BB08J2&coord=A1A0A0) |");
 	for (char c = 'A'; c <= maxch; c++)
 		printf(" %c |", c);
 	puts("");
@@ -21,6 +21,8 @@ int main()
 	scanf("%s", st);
 	for (int i = 0; i < 10; i++)
 	{
+		static char aa[30], ab[30], ac[30];
+		fscanf(file, "%s%s%s", aa, ab, ac);
 		printf("| [0%d](%s) |", date[i], st);
 		static char url[100];
 		strcpy(url, st);
@@ -41,7 +43,9 @@ int main()
 			scanf("%s", st);
 			int num;
 			sscanf(st, "%d", &num);
-			if (num < 300)
+			if (ac[c - 'A'] == '-')
+				printf(" |");
+			else if (num < 300)
 				printf(" %s |", st);
 			else
 				printf(" [%s](%s%c) |", st, url, c);

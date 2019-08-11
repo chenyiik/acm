@@ -10,9 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 try:
-	options = selenium.webdriver.firefox.options.Options()
-	options.add_argument("-headless")
-	driver = webdriver.Firefox(executable_path='./geckodriver',options=options)
+	driver = webdriver.Safari()
 except:
 	options = webdriver.ChromeOptions()
 	options.add_argument("--headless")

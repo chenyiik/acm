@@ -3,9 +3,6 @@
 
 int main()
 {
-	//freopen("nowcoder.txt", "r", stdin);
-	//freopen("nowcoder.md", "w", stdout);
-	//FILE *file = fopen("hdu.ac", "r");
 	puts("## hdu");
 	static const int date[10] = {722, 724, 729, 731, 805, 807, 812, 814, 819, 821};
 	const int maxnu = 1013;
@@ -21,8 +18,6 @@ int main()
 	scanf("%s", st);
 	for (int i = 0; i < 10; i++)
 	{
-		//static char aa[30], ab[30], ac[30];
-		//fscanf(file, "%s%s", aa, ab);
 		printf("| [0%d](%s) |", date[i], st);
 		static char *url = "http://acm.hdu.edu.cn/showproblem.php?pid=";
 		int d = 1001;
@@ -39,7 +34,6 @@ int main()
 			static char prob[10], ac[5];
 			strcpy(prob, st);
 			scanf("%s%s", st, ac);
-			//fscanf(file, "%s", ac);
 			int num;
 			sscanf(st, "%d", &num);
 			if (ac[0] == '-')
@@ -56,6 +50,5 @@ int main()
 		if (b == 0)
 			break;
 	}
-	//fclose(file);
 	return 0;
 }

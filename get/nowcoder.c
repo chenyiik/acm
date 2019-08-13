@@ -3,9 +3,6 @@
 
 int main()
 {
-	//freopen("nowcoder.txt", "r", stdin);
-	//freopen("nowcoder.md", "w", stdout);
-	//FILE *file = fopen("nowcoder.ac", "r");
 	puts("## nowcoder");
 	static const int date[10] = {718, 720, 725, 727, 801, 803, 808, 810, 815, 817};
 	const char maxch = 'K';
@@ -21,8 +18,6 @@ int main()
 	scanf("%s", st);
 	for (int i = 0; i < 10; i++)
 	{
-		//static char aa[30], ab[30], ac[30];
-		//fscanf(file, "%s%s%s", aa, ab, ac);
 		printf("| [0%d](%s) |", date[i], st);
 		static char url[100];
 		strcpy(url, st);
@@ -58,6 +53,5 @@ int main()
 		if (b == 0)
 			break;
 	}
-	//fclose(file);
 	return 0;
 }

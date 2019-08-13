@@ -2,78 +2,42 @@
 #include <cstring>
 #include <iostream>
 #include <algorithm>
-#include <stack>
 
 using namespace std;
-
-const int maxn = 3005;
-char s[maxn];
-int tag[maxn][maxn];
-int a[maxn][maxn];
-
-struct P { int id, val; };
 
 int main()
 {
 	int n, m;
-	scanf("%d%d", &n, &m);
-	long long ans = 0;
+	cin >> n >> m;
+	const int maxn = 3005;
+	static int sum[maxn][maxn], lx[maxn][maxn];
 	for (int i = 1; i <= n; i++)
 	{
-		scanf("%s", s);
-		for (int j = 0; j < m; j++)
-			a[i][j] = s[j] == '1' ? a[i - 1][j] + 1 : 0;
-	}
-	for (int i = 1; i <= n; i++)
-	{
-		stack<P> S;
-		S.push({0, 0});
-		for (int j = 0; j <= m; j++)
+		static char s[maxn];
+		scanf("%s", s + 1);
+		for (int j = 1; j <= m + 1; j++)
 		{
-			if (a[i][j] == S.top().val)
-				;
-			else if (a[i][j] > S.top().val)
-				S.push({j, a[i][j]});
-			else
-			{
-				int id;
-				while (a[i][j] < S.top().val)
-				{
-					id = S.top().id;
-					tag[i][id] = j - id;
-					if (tag[i][id] != tag[i - 1][id])
-						;//ans++;
-					S.pop();
-				}
-				if (a[i][j] != S.top().val)
-					S.push({id, a[i][j]});
-			}
+			sum[i][j] = sum[i][j - 1] + (s[j] == '1');
+			lx[i][j] = s[j] == '1' ? lx[i - 1][j] + 1 : 0;
 		}
-		for (int j = 0; j <= m; j++)
-			cout << tag[i][j] << ' ';
-		cout << endl;
 	}
-	for (int i = 0; i < m; i++)
-	{
-		cout << ans << endl;
-		stack<int> S;
-		S.push(0);
-		for (int j = 1; j <= n + 1; j++)
+	int st[maxn], size = 0, pre[maxn], ans = 0;
+	for (int i = 1; i <= n; i++)
+		for (int j = 1; j <= m + 1; j++)
 		{
-			if (tag[j][i] == S.top())
-				;
-			else if (tag[j][i] > S.top())
-				ans++, S.push(tag[j][i]);
-			else
+			int pos = j;
+			while (lx[i][j] < st[size])
 			{
-				while (tag[j][i] < S.top())
-					S.pop();
-				if (S.top() == 0)
+				if (sum[i + 1][j - 1] - sum[i + 1][pre[size] - 1] < j - pre[size])
 					ans++;
-				S.push(tag[j][i]);
+				pos = pre[size--];
+			}
+			if (lx[i][j] > st[size])
+			{
+				st[++size] = lx[i][j];
+				pre[size] = pos;
 			}
 		}
-	}
-	printf("%lld\n", ans);
+	cout << ans << endl;
 	return 0;
 }

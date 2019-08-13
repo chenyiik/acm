@@ -17,7 +17,7 @@ def main():
 			driver.get(url)
 			if driver.current_url!=url:
 				break
-			wait = WebDriverWait(driver, 10)
+			wait = WebDriverWait(driver, 60)
 			table = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'table-hover')))
 			table_rows = table.find_elements_by_tag_name("tr")
 			print(url)

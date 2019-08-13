@@ -1,7 +1,4 @@
-all: nowcoder.exe hdu.exe
+all: get.exe
 
-nowcoder.exe: nowcoder.c
-	gcc nowcoder.c -o nowcoder.exe
-
-hdu.exe: hdu.c
-	gcc hdu.c -o hdu.exe
+get.exe: get.c
+	gcc get.c -o get.exe

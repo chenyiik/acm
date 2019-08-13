@@ -6,7 +6,7 @@ def main():
 	for contest_id in range(881,891):
 		hyper="https://ac.nowcoder.com/acm/contest/{}#question".format(contest_id)
 		url="https://ac.nowcoder.com/acm/contest/problem-list?token=&id={}".format(contest_id)
-		if contest_id<=885:
+		if contest_id<=886:
 			url2="https://ac.nowcoder.com/acm/contest/status-list?token=&id={}&pageSize=100&statusTypeFilter=5&searchUserName=bed".format(contest_id)
 		else:
 			url2="https://ac.nowcoder.com/acm/contest/status-list?token=&id={}&pageSize=100&statusTypeFilter=5&searchUserName=Go_go".format(contest_id)

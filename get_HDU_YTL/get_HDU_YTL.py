@@ -28,10 +28,12 @@ def main():
 		post_obj = session.post(contest_login_url, params)
 		r2 = session.get(contest_url)
 		soup = BeautifulSoup(r2.text, "lxml")
-		local_mp=[]
+		local_mp = []
+		cnt = []
 		for i in range(len(soup.table.contents)):
 			if i == 0:
 				continue
+			cnt.append(eval(soup.table.contents[i].text.split("(")[1].split("/")[0]))
 			if soup.table.contents[i].img!=None:
 				#print("{}".format(i+1000))
 				local_mp.append(True)
@@ -40,7 +42,8 @@ def main():
 
 		for i in range(0,(len(problems)+1)//4):
 			problem_id = problems[i*4].text
-			problem_AC = problems[i*4+3].text.split('(')[1].split('/')[0]
+			problem_AC = eval(problems[i*4+3].text.split('(')[1].split('/')[0])
+			problem_AC += cnt[i]
 			if (problem_id in mp.keys()) or (local_mp[i]):
 				problem_solved = '-'
 			else:

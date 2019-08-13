@@ -30,6 +30,8 @@ def main():
 		soup = BeautifulSoup(r2.text, "lxml")
 		local_mp=[]
 		for i in range(len(soup.table.contents)):
+			if i == 0:
+				continue
 			if soup.table.contents[i].img!=None:
 				#print("{}".format(i+1000))
 				local_mp.append(True)

@@ -19,10 +19,27 @@ def main():
 		if((len(problems)+1)//4<3):
 			continue
 		print(url)
+
+		contest_id = 847 + i
+		contest_url = "http://acm.hdu.edu.cn/contests/contest_show.php?cid={}".format(contest_id)
+		contest_login_url="http://acm.hdu.edu.cn/userloginex.php?action=login&cid={}&notice=0".format(contest_id)
+		params = {"username":"team0649","userpass":"147838","login":"Sign In"}
+		session = requests.session()
+		post_obj = session.post(contest_login_url, params)
+		r2 = session.get(contest_url)
+		soup = BeautifulSoup(r2.text, "lxml")
+		local_mp=[]
+		for i in range(len(soup.table.contents)):
+			if soup.table.contents[i].img!=None:
+				#print("{}".format(i+1000))
+				local_mp.append(True)
+			else:
+				local_mp.append(False)
+
 		for i in range(0,(len(problems)+1)//4):
 			problem_id = problems[i*4].text
 			problem_AC = problems[i*4+3].text.split('(')[1].split('/')[0]
-			if problem_id in mp.keys():
+			if (problem_id in mp.keys()) or (local_mp[i]):
 				problem_solved = '-'
 			else:
 				problem_solved = 'W'

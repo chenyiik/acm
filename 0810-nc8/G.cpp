@@ -29,4 +29,8 @@ int main()
         cout<<cnt<<endl;
     }
     return 0;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 2c46c2cf497eec3769e55eb32669d9328c4b148c

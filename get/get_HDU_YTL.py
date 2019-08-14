@@ -15,6 +15,8 @@ def main():
 		r = requests.get(url)
 		soup = BeautifulSoup(r.text, "lxml")
 		table = soup.body.contents[3].tbody.contents[3].td.table
+		if(table==None):
+			continue
 		problems = table.find_all(attrs={'class':"TABLE_TEXT"})
 		if((len(problems)+1)//4<3):
 			continue

@@ -40,7 +40,9 @@ int main()
         uli f1=find(u),f2=find(v);
         if (f1==f2) {cout<<ans<<endl;continue;}
         uli dm=(size[f1]*size[f1])+(cnl-1)*size[f2];
-        if (ans>dm) ans-=dm;else ans=0;
+        uli dm2=(size[f1]*size[f2]*C[n-size[f1]-size[f2]][2]);
+        //cout<<size[f1]<<" "<<size[f2]<<endl;
+        if (ans>dm2) ans-=dm2;else ans=0;
         merge(u,v);
         cout<<ans<<endl;
     }

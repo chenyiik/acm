@@ -1,6 +1,9 @@
-#include<bits/stdc++.h>
+//#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
 typedef unsigned long long uli;
+namespace hyl
+{
 uli C[100005][10];
 void init()
 {
@@ -24,6 +27,7 @@ void merge(uli x,uli y)
     size[t1]+=size[t2];
     cnl--;
 }
+uli cal(uli n) { return n * (n - 1) / 2; }
 int main()
 {
     uli n,m;
@@ -31,6 +35,7 @@ int main()
     cin>>n>>m;cnl=n;
     for (uli i=1;i<=n;i++) {fa[i]=i,size[i]=1;}
     init();
+	uli tot = 0;
     uli ans=C[n][4];
     cout<<ans<<endl;
     for (uli i=1;i<=m;i++)
@@ -39,8 +44,10 @@ int main()
         cin>>u>>v;
         uli f1=find(u),f2=find(v);
         if (f1==f2) {cout<<ans<<endl;continue;}
-        uli dm=(size[f1]*size[f1])+(cnl-1)*size[f2];
-        uli dm2=(size[f1]*size[f2]*C[n-size[f1]-size[f2]][2]);
+		tot -= cal(size[f1]) + cal(size[f2]);
+        //uli dm=(size[f1]*size[f1])+(cnl-1)*size[f2];
+        uli dm2=(size[f1]*size[f2]*(C[n-size[f1]-size[f2]][2] - tot));
+		tot += cal(size[f1] + size[f2]);
         //cout<<size[f1]<<" "<<size[f2]<<endl;
         if (ans>dm2) ans-=dm2;else ans=0;
         merge(u,v);
@@ -48,3 +55,6 @@ int main()
     }
     return 0;
 }
+}
+
+int main() { return hyl::main(); }

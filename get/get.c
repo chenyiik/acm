@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
+const int nowcoder_limit = 400, hdu_limit = 300;
+
 void nowcoder(); void hdu(); 
 int main() 
 { 
 	fprintf(stderr, "\nFucking nowcoder *t...\n");
 	nowcoder(); 
 	fprintf(stderr, "Nowcoder Fucking complete!\n");
+	puts("---\n---");
 	fprintf(stderr, "\nFucking HDU *t...\n");
 	hdu(); 
 	fprintf(stderr, "HDU Fucking complete!\n");
@@ -15,6 +18,7 @@ int main()
 
 void nowcoder()
 {
+	int acprob = 0, totprob = 0;
 	puts("## nowcoder");
 	static const int date[10] = {718, 720, 725, 727, 801, 803, 808, 810, 815, 817};
 	const char maxch = 'K';
@@ -52,11 +56,12 @@ void nowcoder()
 			int num;
 			sscanf(st, "%d", &num);
 			if (ac[0] == '-')
-				printf(" |");
-			else if (num < 400)
+				printf(" |"), acprob++;
+			else if (num < nowcoder_limit)
 				printf(" %s |", st);
 			else
 				printf(" [%s](%s%c) |", st, url, c);
+			totprob++;
 			c++;
 		}
 		while (c++ <= maxch)
@@ -65,10 +70,12 @@ void nowcoder()
 		if (b == 0)
 			break;
 	}
+	printf("##### %.2f%%\t\t%d/%d\n", 100.0*acprob/totprob, acprob, totprob);
 }
 
 void hdu()
 {
+	int acprob = 0, totprob = 0;
 	puts("## hdu");
 	static const int date[10] = {722, 724, 729, 731, 805, 807, 812, 814, 819, 821};
 	const int maxnu = 1013;
@@ -103,12 +110,13 @@ void hdu()
 			int num;
 			sscanf(st, "%d", &num);
 			if (ac[0] == '-')
-				printf(" |");
-			else if (num < 400)
+				printf(" |"), acprob++;
+			else if (num < hdu_limit)
 				printf(" %s |", st);
 			else
 				printf(" [%s](%s%s) |", st, url, prob);
 			d++;
+			totprob++;
 		}
 		while (d++ <= maxnu)
 			printf(" - |");
@@ -116,4 +124,5 @@ void hdu()
 		if (b == 0)
 			break;
 	}
+	printf("##### %.2f%%\t\t%d/%d\n", 100.0*acprob/totprob, acprob, totprob);
 }

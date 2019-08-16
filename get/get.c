@@ -53,7 +53,7 @@ void nowcoder()
 			sscanf(st, "%d", &num);
 			if (ac[0] == '-')
 				printf(" |");
-			else if (num < 300)
+			else if (num < 400)
 				printf(" %s |", st);
 			else
 				printf(" [%s](%s%c) |", st, url, c);
@@ -104,7 +104,7 @@ void hdu()
 			sscanf(st, "%d", &num);
 			if (ac[0] == '-')
 				printf(" |");
-			else if (num < 300)
+			else if (num < 400)
 				printf(" %s |", st);
 			else
 				printf(" [%s](%s%s) |", st, url, prob);

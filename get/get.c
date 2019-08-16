@@ -4,10 +4,10 @@
 void nowcoder(); void hdu(); 
 int main() 
 { 
-	fprintf(stderr, "\nFucking nowcoder star...\n");
+	fprintf(stderr, "\nFucking nowcoder *t...\n");
 	nowcoder(); 
 	fprintf(stderr, "Nowcoder Fucking complete!\n");
-	fprintf(stderr, "\nFucking HDU star...\n");
+	fprintf(stderr, "\nFucking HDU *t...\n");
 	hdu(); 
 	fprintf(stderr, "HDU Fucking complete!\n");
 	return 0; 

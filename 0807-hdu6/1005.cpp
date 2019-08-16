@@ -1,58 +1,100 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct pt
+namespace segtree
+{
+    using LL=long long;
+    using datatype=LL;
+    struct Node
+    {
+        int l,r;
+        LL sum;
+        LL leftsum,rightsum,rangesum;
+    }segTree[2050*4];
+
+    inline int leftchild(int root)
+    { return root<<1; }
+
+    inline int rightchild(int root)
+    { return root<<1|1; }
+
+    void clear()
+    {
+        memset(segTree,0,sizeof(segTree));
+    }
+
+    void build(int root,int l,int r)
+    {
+        segTree[root].l=l;
+        segTree[root].r=r;
+        segTree[root].leftsum=segTree[root].rightsum=segTree[root].rangesum=segTree[root].sum=0;
+        if(l==r) return;
+        int mid=(l+r)>>1;
+        build(leftchild(root),l,mid);
+        build(rightchild(root),mid+1,r);
+    }
+
+    void push_up(int root)
+    {
+        segTree[root].sum=segTree[leftchild(root)].sum+segTree[rightchild(root)].sum;
+        segTree[root].leftsum=max(segTree[leftchild(root)].leftsum,segTree[rightchild(root)].leftsum+segTree[leftchild(root)].sum);
+        segTree[root].rightsum=max(segTree[rightchild(root)].rightsum,segTree[leftchild(root)].rightsum+segTree[rightchild(root)].sum);
+        segTree[root].rangesum=max(segTree[leftchild(root)].rightsum+segTree[rightchild(root)].leftsum,max(segTree[leftchild(root)].rangesum,segTree[rightchild(root)].rangesum));
+    }
+    void add(int root,int pos,LL v)
+    {
+        if (segTree[root].l==segTree[root].r)
+        {
+            segTree[root].sum+=v;
+            segTree[root].leftsum+=v;
+            segTree[root].rightsum+=v;
+            segTree[root].rangesum+=v;
+            return;
+        }
+        int mid=(segTree[root].l+segTree[root].r)/2;
+        if (pos<=mid) add(leftchild(root),pos,v);
+        else add(rightchild(root),pos,v);
+        push_up(root);
+    }
+}
+struct box
 {
     int x,y,val;
+    bool operator <(const box& b) const
+    {
+        return x<b.x;
+    }
 };
-pt nval[2050];
-int xval[2050],yval[2050];
-unordered_map<int,int> mpx;
-unordered_map<int,int> mpy;
-int matrix[2050][2050];
-int nxt[2050][2050];
-int qz[2050][2050];
+box a[2050];
+int b[2050];
+using LL=segtree::datatype;
 int main()
 {
-    int T;
-    scanf("%d",&T);
-    while (T--)
+    int _;
+    ios::sync_with_stdio(0);cin.tie(0);
+    cin>>_;
+    while (_--)
     {
         int n;
-        scanf("%d",&n);
-        mpx.clear(),mpy.clear();
-        for (int i=1;i<=n;i++) {scanf("%d%d%d",&nval[i].x,&nval[i].y,&nval[i].val);xval[i]=nval[i].x;yval[i]=nval[i].y;}
-        sort(xval+1,xval+1+n);
-        int cntx=unique(xval+1,xval+1+n)-xval-1;
-        for (int i=1;i<=cntx;i++) mpx[xval[i]]=i;
-        sort(yval+1,yval+1+n);
-        int cnty=unique(yval+1,yval+1+n)-yval-1;
-        for (int i=1;i<=cnty;i++) mpy[yval[i]]=i;
-        memset(matrix,0,sizeof(matrix));
-        for (int i=1;i<=n;i++) for (int j=1;j<=n;j++) nxt[i][j]=cntx+1;
-        for (int i=1;i<=n;i++) matrix[mpx[nval[i].x]][mpy[nval[i].y]]+=nval[i].val;
-        for (int i=1;i<=cnty;i++)
+        cin>>n;
+        for (int i=1;i<=n;i++) {cin>>a[i].x>>a[i].y>>a[i].val;b[i]=a[i].y;}
+        sort(b+1,b+n+1);
+        int cnt=unique(b+1,b+n+1)-b-1;
+        sort(a+1,a+n+1);
+        for (int i=1;i<=n;i++)
+            a[i].y=lower_bound(b+1,b+cnt+1,a[i].y)-b;
+        LL ans=0;
+        int k=0;
+        for (int i=1;i<=n;i++)
         {
-            int lastnz=0;
-            for(int j=1;j<=cntx;j++)
+            if (i==1||a[i].x!=a[i-1].x)
             {
-                matrix[i][j]=matrix[i][j]+matrix[i-1][j];
-                if(matrix[i][j]!=0)
+                segtree::build(1,1,cnt);
+                for (int j=i;j<=n;j=k)
                 {
-                    nxt[i][lastnz]=j;
-                    lastnz=j;
+                    for (k=j;k<=n && a[j].x==a[k].x;k++)
+                        segtree::add(1,a[k].y,a[k].val);
+                    ans=max(ans,segtree::segTree[1].rangesum);
                 }
-            }
-        }
-        int ans=0;
-        for (int i=1;i<=cnty;i++)
-        for (int j=i;j<=cnty;j++)
-        {
-            int sum=0;
-            for (int k=min(nxt[i][0],nxt[j][0]);k<=cntx;k=min(nxt[i][k],nxt[j][k]))
-            {
-                sum=sum+(matrix[j][k]-matrix[i-1][k]);
-                if (sum<0) sum=0;
-                if (sum>ans) ans=sum;
             }
         }
         cout<<ans<<endl;

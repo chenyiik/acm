@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-const int nowcoder_limit = 400;
+const int nowcoder_limit = 350;
 const int hdu_limit = 250;
 
 void nowcoder(); void hdu(); 

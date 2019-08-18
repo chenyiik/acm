@@ -8,42 +8,63 @@ using namespace std;
 
 typedef long long LL;
 
-const int maxn = 100000 + 10, maxl = 1 << 17;
-LL maxv[maxl * 4 + 5], maxw[maxl * 4 + 5];
+const int K = 4;
+const int maxn = (100000 + 10) * K;
+LL minv[maxn], maxv[maxn], sumv[maxn], addv[maxn];
 
-int ql, qr; 
-
-LL query(LL a[], int o = 1, int L = 1, int R = maxl) //get max in [ql, qr]
+void maintain(int o, int L, int R)
 {
-	int M = L + (R - L) / 2; LL ans = 0;
-	if (ql <= L && R <= qr)
-		return a[o];
-	if (ql <= M)
-		ans = max(ans, query(a, o * 2, L, M));
-	if (M < qr)
-		ans = max(ans, query(a, o * 2 + 1, M + 1, R));
-	return ans;
+	int lc = o * 2, rc = o * 2 + 1;
+	sumv[o] = minv[o] = maxv[o] = 0;
+	if (R > L)
+	{
+		sumv[o] = sumv[lc] + sumv[rc];
+		minv[o] = min(minv[lc], minv[rc]);
+		maxv[o] = max(maxv[lc], maxv[rc]);
+	}
+	minv[o] += addv[o];
+	maxv[o] += addv[o];
+	sumv[o] += addv[o] * (R - L + 1);
 }
 
-int p; LL vv; 
+int ql, qr; LL v;
 
-void update(LL a[], int o = 1, int L = 1, int R = maxl) //let A[p] = v;
+void update(int o, int L, int R) //let [ql, qr] add v;
 {
-	int M = L + (R - L) / 2;
-	if (L == R)
-		a[o] = vv;
+	int lc = o * 2, rc = o * 2 + 1;
+	if (ql <= L && qr >= R)
+		addv[o] += v;
 	else
 	{
-		if (p <= M)
-			update(a, o * 2, L, M);
-		else
-			update(a, o * 2 + 1, M + 1, R);
-		a[o] = max(a[o * 2], a[o * 2 + 1]);
+		int M = L + (R - L) / 2;
+		if (ql <= M)
+			update(lc, L, M);
+		if (qr > M)
+			update(rc, M + 1, R);
 	}
+	maintain(o, L, R);
 }
 
-struct P { int x, y; LL a, b, v; } c[maxn];
-vector<P> v[maxn];
+LL _min, _max, _sum;
+
+void query(int o, int L, int R, LL add = 0) //get min, max, sum in [ql, qr]
+{
+	if (ql <= L && qr >= R)
+	{
+		_sum += sumv[o] + add * (R - L + 1);
+		_min = min(_min, minv[o] + add);
+		_max = max(_max, maxv[o] + add);
+	}
+	else
+	{
+		int M = L + (R - L) / 2;
+		if (ql <= M)
+			query(o * 2, L, M, add + addv[o]);
+		if (qr > M)
+			query(o * 2 + 1, M + 1, R, add + addv[o]);
+	}
+}
+struct P { int x, y; LL a, b; } c[maxn];
 
 int main()
 {
@@ -51,45 +72,24 @@ int main()
 	{
 		for (int i = 0; i < n; i++)
 			scanf("%d%d%lld%lld", &c[i].x, &c[i].y, &c[i].a, &c[i].b);
-		sort(c, c + n, [](const P &a, const P &b) { return a.x < b.x; });
-		int mx = 1, my = 2; c[n].x = c[n].y = -1;
+		sort(c, c + n, [](P a, P b) { return a.y < b.y; });
+		c[n] = {-1, -1, -1, -1};
+		int _ = 2;
 		for (int i = 0; i < n; i++)
-			c[i].x = c[i].x == c[i + 1].x ? mx : mx++;
-		for (int i = 1; i < mx; i++)
-			v[i].clear(), v[i].push_back(P{i, 1, 0, 0, 0});
-		sort(c, c + n, [](const P &a, const P &b) { return a.y < b.y; });
+			c[i].y = c[i].y == c[i + 1].y ? _ : _++;
+		sort(c, c + n, [](P a, P b) { return a.x < b.x || (a.x == b.x && a.y > b.y); });
+		memset(maxv, 0, sizeof(LL) * (_ * K)), memset(addv, 0, sizeof(LL) * (_ * K));
+		memset(minv, 0, sizeof(LL) * (_ * K)), memset(sumv, 0, sizeof(LL) * (_ * K));
 		for (int i = 0; i < n; i++)
 		{
-			c[i].y = c[i].y == c[i + 1].y ? my : my++;
-			v[c[i].x].push_back(c[i]), v[c[i].x][0].v += c[i].a;
+			LL __;
+			ql = 1, qr = c[i].y, _max = 0, query(1, 1, _), __ = _max;
+			ql = c[i].y, qr = c[i].y, _max = 0, query(1, 1, _);
+			ql = c[i].y, qr = c[i].y, v = max(0LL, __ + c[i].b - _max), update(1, 1, _);
+			ql = 1, qr = c[i].y - 1, v = c[i].a, update(1, 1, _);
+			ql = c[i].y + 1, qr = _, v = c[i].b, update(1, 1, _);
 		}
-		LL *mv = maxv, *mw = maxw, ans = 0;
-		for (int i = 1; i < mx; i++)
-		{
-			for (int j = 1; j < v[i].size(); j++)
-				v[i][j].v = v[i][j - 1].v + v[i][j].b - v[i][j].a;
-			int s = v[i].size();
-			for (int j = 0; j < s; j++)
-			{
-				ql = 1, qr = j + 1 == v[i].size() ? my : v[i][j + 1].y - 1;
-				LL t;
-				ans = max(ans, v[i][j].v += t = query(mv));
-				for (int j = 0; j < v[i - 1].size(); j++)
-					if (v[i - 1][j].v == t)
-					{
-						t = j;
-						break;
-					}
-				p = v[i][j].y = max(v[i][j].y, (int)t);
-				vv = v[i][j].v, update(mw);
-			}
-			for (int j = 0; j < v[i - 1].size(); j++)
-				p = v[i - 1][j].y, vv = -v[i - 1][j].v, update(mv);
-			swap(mv, mw);
-		}
-		for (int j = 0; j < v[mx - 1].size(); j++)
-			p = v[mx - 1][j].y, vv = -v[mx - 1][j].v, update(mv);
-		printf("%lld\n", ans);
+		printf("%lld\n", maxv[1]);
 	}
 	return 0;
 }

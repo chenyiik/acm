@@ -26,11 +26,11 @@ void nowcoder()
 	printf("| [log](https://docs.qq.com/sheet/DWW9aU2VObHV2a2ph?preview_token=&tab=BB08J2&coord=A1A0A0) |");
 	for (char c = 'A'; c <= maxch; c++)
 		printf(" %c |", c);
-	puts("");
+	puts(" rate |");
 	printf("| :-: |");
 	for (char c = 'A'; c <= maxch; c++)
 		printf(" :-: |");
-	puts("");
+	puts(" :-: |");
 	static char st[100];
 	scanf("%s", st);
 	for (int i = 0; i < 10; i++)
@@ -42,7 +42,7 @@ void nowcoder()
 			url[i] = 0;
 		url[strlen(url) - 1] = '/';
 		char c = 'A';
-		int b;
+		int b, dayac = 0, daytot = 0;
 		while ((b = ~scanf("%s", st)))
 		{
 			if (strcmp(st, "EOF") == 0)
@@ -57,17 +57,17 @@ void nowcoder()
 			int num;
 			sscanf(st, "%d", &num);
 			if (ac[0] == '-')
-				printf(" |"), acprob++;
+				printf(" |"), acprob++, dayac++;
 			else if (num < nowcoder_limit)
 				printf(" %s |", st);
 			else
 				printf(" [%s](%s%c) |", st, url, c);
-			totprob++;
+			totprob++, daytot++;
 			c++;
 		}
 		while (c++ <= maxch)
 			printf(" - |");
-		puts("");
+		printf(" %d%% |\n", 100*dayac/daytot);
 		if (b == 0)
 			break;
 	}
@@ -83,11 +83,11 @@ void hdu()
 	printf("| [log](https://docs.qq.com/sheet/DWW9aU2VObHV2a2ph?preview_token=&tab=BB08J2&coord=A1A0A0) |");
 	for (int i = 1001; i <= 1013; i++)
 		printf(" %d |", i - 1000);
-	puts("");
+	puts(" rate |");
 	printf("| :-: |");
 	for (int i = 1001; i <= 1013; i++)
 		printf(" :-: |");
-	puts("");
+	puts(" :-: |");
 	static char st[500];
 	scanf("%s", st);
 	for (int i = 0; i < 10; i++)
@@ -95,7 +95,7 @@ void hdu()
 		printf("| [0%d](%s) |", date[i], st);
 		static char *url = "http://acm.hdu.edu.cn/showproblem.php?pid=";
 		int d = 1001;
-		int b;
+		int b, dayac = 0, daytot = 0;
 		while ((b = ~scanf("%s", st)))
 		{
 			if (strcmp(st, "EOF") == 0)
@@ -111,17 +111,17 @@ void hdu()
 			int num;
 			sscanf(st, "%d", &num);
 			if (ac[0] == '-')
-				printf(" |"), acprob++;
+				printf(" |"), acprob++, dayac++;
 			else if (num < hdu_limit)
 				printf(" %s |", st);
 			else
 				printf(" [%s](%s%s) |", st, url, prob);
 			d++;
-			totprob++;
+			totprob++, daytot++;
 		}
 		while (d++ <= maxnu)
 			printf(" - |");
-		puts("");
+		printf(" %d%% |\n", 100*dayac/daytot);
 		if (b == 0)
 			break;
 	}

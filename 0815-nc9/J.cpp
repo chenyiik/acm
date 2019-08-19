@@ -1,32 +1,29 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct tt
-{
-    double up,fl,midx;
-    bool operator <(const tt& b) {return midx<b.midx;}
-}midx[300050];
+vector<pair<long long,long long> > midl;
 int main()
 {
-    int n;
+    long long n;
     ios::sync_with_stdio(0);cin.tie(0);
     cin>>n;
-    for (int i=1;i<=n;i++) {cin>>midx[i].up>>midx[i].fl;midx[i].midx=0.5*(midx[i].up+midx[i].fl);}
-    sort(midx+1,midx+1+n);
-    double m_line;
-    if (n&1) m_line=midx[n>>1+1].midx;
-    else m_line=0.5*(midx[n>>1].midx+midx[n>>1+1].midx);
-    double area=0;
-    for (int i=1;i<=n;i++)
+    for (long long i=1;i<=n;i++)
     {
-        double dh,df;
-        dh=midx[i].up;
-        df=midx[i].fl;
-        if (m_line>dh) dh=0;
-        if (m_line<df) df=0;
-        dh=fabs(dh-m_line);
-        df=fabs(m_line-df);
-        dh=min(dh,df);
-        area+=2*dh;
+        long long yl,yt;
+        cin>>yl>>yt;
+        yl*=2;yt*=2;
+        midl.emplace_back(make_pair(yl,1));
+        midl.emplace_back(make_pair((yl+yt)>>1,-2));
+        midl.emplace_back(make_pair(yt,1));
     }
-    cout<<area<<endl;
+    sort(midl.begin(),midl.end());
+    long long ans=0,cnt=0;
+    long long now=0,area=0;
+    for (long long i=0;i<midl.size()-1;i++)
+    {
+        cnt+=midl[i].second;
+        now=midl[i+1].first-midl[i].first;
+        area+=cnt*now;
+        ans=max(ans,area);
+    }
+    cout<<ans<<endl;
 }

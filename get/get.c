@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 
-const int nowcoder_limit = 350;
+const int nowcoder_limit = 300;
 const int hdu_limit = 200;
+
+int AC = 0, TOT = 0;
 
 void nowcoder(); void hdu(); 
 int main() 
@@ -14,6 +16,8 @@ int main()
 	fprintf(stderr, "\nFucking HDU *t...\n");
 	hdu(); 
 	fprintf(stderr, "HDU Fucking complete!\n");
+	puts("---\n---");
+	printf("#### %.2f%%\t\t%d/%d\n", 100.0*AC/TOT, AC, TOT);
 	return 0; 
 }
 
@@ -72,6 +76,7 @@ void nowcoder()
 			break;
 	}
 	printf("##### %.2f%%\t\t%d/%d\n", 100.0*acprob/totprob, acprob, totprob);
+	AC += acprob, TOT += totprob;
 }
 
 void hdu()
@@ -126,4 +131,5 @@ void hdu()
 			break;
 	}
 	printf("##### %.2f%%\t\t%d/%d\n", 100.0*acprob/totprob, acprob, totprob);
+	AC += acprob, TOT += totprob;
 }

@@ -88,4 +88,8 @@ int main()
         }
         cout<<ans<<endl;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c60af5c3ebf4bc0dfa120787215675ab9379400c

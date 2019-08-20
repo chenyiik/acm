@@ -2,7 +2,7 @@
 #include <string.h>
 
 const int nowcoder_limit = 350;
-const int hdu_limit = 250;
+const int hdu_limit = 200;
 
 void nowcoder(); void hdu(); 
 int main() 

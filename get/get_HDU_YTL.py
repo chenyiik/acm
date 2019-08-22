@@ -42,7 +42,7 @@ def main():
 			else:
 				local_mp.append(False)
 
-		for i in range(0,(len(problems)+1)//4):
+		for i in range(0,len(local_mp)):
 			problem_id = problems[i*4].text
 			problem_AC = eval(problems[i*4+3].text.split('(')[1].split('/')[0])
 			problem_AC += cnt[i]

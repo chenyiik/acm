@@ -2,7 +2,7 @@
 
 #####CHEN Yiik
 
-#####v0.9.2
+#####v1.1
 
 ***
 
@@ -15,6 +15,8 @@
 ####nm \<f6> :w\<cr>:!python3 %\<cr>
 
 ####se ai cin ts=4 sw=4 nu cul
+
+#### nm 0 ^
 
 ####colo t*
 
@@ -32,6 +34,8 @@
 
 ####se nocp bs=indent,eol,start ai cin ts=4 sw=4 nu ru cul
 
+#### nm 0 ^
+
 ####syntax on
 
 ####colo t*
@@ -46,44 +50,32 @@
 
 
 
-
-
-
-
 ### 1.1 - prime
 
 ```c++
+const int maxn = 10000000 + 10, maxp = 700000;
+bool is_p[maxn]; //is_p[i] == true when i is 1 or a prime
+int prime[maxp], pn = 0;
 
-const int maxn = 10000000 + 10;
-const int maxp = 700000;
-
-int vis[maxn]; //vis[i] == 0 when i is 1 or a prime
-int prime[maxp];
-
-void sieve(int n)
+void prime_table(int n)
 {
-	int m = (int)sqrt(n + 0.5);
-	memset(vis, 0, sizeof(vis));
-	for (int i = 2; i <= m; i++)
-		if (!vis[i])
-			for (int j = i * i; j <= n; j += i)
-				vis[j] = 1;
-}
-
-int gen_primes(int n)
-{
-	sieve(n);
-	int c = 0;
 	for (int i = 2; i <= n; i++)
-		if (!vis[i])
-			prime[c++] = i;
-	return c;
+	{
+		if (!is_p[i])
+			prime[pn++] = i;
+		for (int j = 0; j < pn && i * prime[j] <= n; j++)
+		{
+			is_p[i * prime[j]] = true;
+			if (i % prime[j] == 0)
+				break;
+		}
+	}
 }
 ```
 
 
 
-### 1.2 - gcd
+### 1.2 - gcd - inv
 
 ```c++
 LL gcd(LL a, LL b) { return !b ? a : gcd(b, a % b); }
@@ -98,11 +90,18 @@ void gcd(LL a, LL b, LL &d, LL &x, LL &y)
 		y -= x * (a / b);
 	}
 }
+
+LL inv(LL a, LL n) // inv don't exist when it return -1
+{
+	LL d, x, y;
+	gcd(a, n, d, x, y);
+	return d == 1 ? (x + n) % n : -1;
+}
 ```
 
 
 
-###1.3 - pow
+###1.3 - pow - inv
 
 ```c++
 LL pow_mod(LL a, LL p, LL n)
@@ -115,6 +114,8 @@ LL pow_mod(LL a, LL p, LL n)
 		ans = ans * a % n;
 	return ans;
 }
+
+LL inv(LL a, LL n) { return pow_mod(a, n - 2, n); } // when n is a prime
 ```
 
 
@@ -138,40 +139,62 @@ int euler_phi(int n)
 	return ans;
 }
 
-const int maxn = 10000000 + 10;
-int phi[maxn];
+const int maxn = 10000000 + 10, maxp = int(7e5);
+int phi[maxn], prime[maxp], pn = 0;
+bool is_p[maxn + 5];
 
 void phi_table(int n)
 {
-	for (int i = 2; i <= n; i++)
-		phi[i] = 0;
 	phi[1] = 1;
 	for (int i = 2; i <= n; i++)
-		if (!phi[i])
-			for (int j = i; j <= n; j += i)
-			{
-				if (!phi[j])
-					phi[j] = j;
-				phi[j] = phi[j] / i * (i - 1);
-			}
+		phi[i] = 0;
+	for (int i = 2; i <= n; i++)
+	{
+		if (!is_p[i])
+		{
+			prime[pn++] = i;
+			phi[i] = i - 1;
+		}
+		for (int j = 0; j < pn && i * prime[j] <= n; j++)
+		{
+			is_p[i * prime[j]] = true;
+			if (i % prime[j] == 0)
+				phi[i * prime[j]] = phi[i] * prime[j], j = pn;
+			else
+				phi[i * prime[j]] = phi[i] * (prime[j] - 1);
+		}
+	}
 }
 ```
 
 
 
-### 1.5 - inv
+### 1.5 - mo
 
 ```c++
-LL inv(LL a, LL n) // inv don't exist when it return -1
-{
-	LL d, x, y;
-	gcd(a, n, d, x, y);
-	return d == 1 ? (x + n) % n : -1;
-}
+const int maxn = 10000000 + 10, maxp = 700000;
+bool is_p[maxn]; //is_p[i] == true when i is 1 or a prime
+int mo[maxn], prime[maxp], pn = 0;
 
-LL inv2(LL a, LL n) // when n is a prime
+void prime_table(int n)
 {
-	return pow_mod(a, n - 2, n);
+	mo[1] = 1;
+	for (int i = 2; i <= n; i++)
+	{
+		if (!is_p[i])
+		{
+			prime[pn++] = i;
+			mo[i] = -1;
+		}
+		for (int j = 0; j < pn && i * prime[j] <= n; j++)
+		{
+			is_p[i * prime[j]] = true;
+			if (i % prime[j] == 0)
+				break;
+			else
+				mo[i * prime[j]] = -mo[i];
+		}
+	}
 }
 ```
 

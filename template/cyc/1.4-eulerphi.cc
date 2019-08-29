@@ -17,19 +17,28 @@ int euler_phi(int n)
 }
 
 const int maxn = 10000000 + 10;
-int phi[maxn];
+int phi[maxn], prime[int(7e5)], pn = 0;
+bool is_p[maxn + 5];
 
 void phi_table(int n)
 {
-	for (int i = 2; i <= n; i++)
-		phi[i] = 0;
 	phi[1] = 1;
 	for (int i = 2; i <= n; i++)
-		if (!phi[i])
-			for (int j = i; j <= n; j += i)
-			{
-				if (!phi[j])
-					phi[j] = j;
-				phi[j] = phi[j] / i * (i - 1);
-			}
+		phi[i] = 0;
+	for (int i = 2; i <= maxn; i++)
+	{
+		if (!is_p[i])
+		{
+			prime[pn++] = i;
+			phi[i] = i - 1;
+		}
+		for (int j = 0; j < pn && i * prime[j] <= maxn; j++)
+		{
+			is_p[i * prime[j]] = true;
+			if (i % prime[j] == 0)
+				phi[i * prime[j]] = phi[i] * prime[j], j = pn;
+			else
+				phi[i * prime[j]] = phi[i] * (prime[j] - 1);
+		}
+	}
 }

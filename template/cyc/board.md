@@ -73,14 +73,12 @@ void prime_table(int n)
 }
 ```
 
-
-
 ### 1.2 - gcd - inv
 
 ```c++
 LL gcd(LL a, LL b) { return !b ? a : gcd(b, a % b); }
 
-void gcd(LL a, LL b, LL &d, LL &x, LL &y)
+void gcd(LL a, LL b, LL &d, LL &x, LL &y) //gcd(a, b) == d
 {
 	if (!b)
 		d = a, x = 1, y = 0;
@@ -99,8 +97,6 @@ LL inv(LL a, LL n) // inv don't exist when it return -1
 }
 ```
 
-
-
 ###1.3 - pow - inv
 
 ```c++
@@ -117,8 +113,6 @@ LL pow_mod(LL a, LL p, LL n)
 
 LL inv(LL a, LL n) { return pow_mod(a, n - 2, n); } // when n is a prime
 ```
-
-
 
 ### 1.4 - eulerphi
 
@@ -140,7 +134,7 @@ int euler_phi(int n)
 }
 
 const int maxn = 10000000 + 10, maxp = int(7e5);
-int phi[maxn], prime[maxp], pn = 0;
+int phi[maxn], prime[maxp], pn = 0; //is_p[i] == true when i is 1 or a prime
 bool is_p[maxn + 5];
 
 void phi_table(int n)
@@ -166,8 +160,6 @@ void phi_table(int n)
 	}
 }
 ```
-
-
 
 ### 1.5 - mo
 
@@ -197,6 +189,27 @@ void prime_table(int n)
 	}
 }
 ```
+
+### 1.6 - some formula
+
+1. $\Sigma_{d|n}\phi(d) = n$
+
+2. $\Sigma_{d|n}\mu(d) = [n = 1]$
+
+3. $\Sigma_{d|n}\cfrac{\mu(d)}{d}=\cfrac{\phi(n)}{n}$
+
+4. $F(n) = \Sigma_{d|n}f(d)$  =>  $f(n) = \Sigma_{d|n}F(\lfloor\cfrac{n}{d}\rfloor)$
+
+5. $F(n) = \Sigma_{n|d} f(d)$  =>  $f(n) = \Sigma_{n|d}\mu(\lfloor\cfrac{d}{n}\rfloor)F(d)$
+
+6. 已知$f(n)$，设$S(n)=\Sigma^n_{i=1}f(i)$, $h(n)=(f*g)(n)=\Sigma_{d|n}f(d)g(\lfloor\cfrac{n}{d}\rfloor)$
+
+   得$g(1)S(n)=\Sigma^n_{i=1}h(i)-\Sigma^n_{d=2}g(d)S(\lfloor\cfrac{n}{d}\rfloor)$
+
+7. $\epsilon(n)=[n=1], I(n)=1, id(n)=n$
+8. $\Sigma^n_{i=1}\phi(i)=S(n)=\Sigma^n_{i=1}i-\Sigma^n_{d=2}S(\lfloor\cfrac{n}{d}\rfloor)$  ($f=\phi, g=I, h=id $)
+9. $\Sigma^n_{i=1}\mu(i)=S(n)=1-\Sigma^n_{d=2}S(\lfloor\cfrac{n}{d}\rfloor)$  ($f = \mu, g = I, h = \epsilon$)
+10. $\Sigma^n_{i=1}i\cdot\phi(i)=S(n)=\Sigma^n_{i=1}i^2-\Sigma^n_{d=2}S(\lfloor\cfrac{n}{d}\rfloor)$  ($f=i\cdot\phi,g=id,h=n^2$)  ($\Sigma^n_{i=1}i^2=\cfrac{n(n+1)(2n+1)}{6}$)
 
 
 
@@ -331,8 +344,6 @@ struct BellmanFord
 };
 ```
 
-
-
 ### 2.2 - scc
 
 ```c++
@@ -381,8 +392,6 @@ void find_scc(int n)
 			dfs(i);
 }
 ```
-
-
 
 ### 2.3 - dinic
 
@@ -469,8 +478,6 @@ struct Dinic
 	}
 };
 ```
-
-
 
 ### 2.4 - mincost
 
@@ -563,8 +570,6 @@ struct MCMF
 };
 ```
 
-
-
 ### 2.5 - kruscal
 
 ```c++
@@ -606,7 +611,7 @@ const int maxv = 1000000 + 10;
 const int maxlogv = 27;
 
 vector<int> G[maxv];
-int root;
+int root; //user set
 
 int parent[maxlogv][maxv];
 int depth[maxv];
@@ -650,13 +655,11 @@ int lca(int u, int v)
 }
 ```
 
-
-
 ### 3.2 - bit
 
 ```c++
 const int maxn = 100000 + 10;
-int C[maxn], n; //from 1 to n
+int C[maxn], n; //from 1 to n, 2*n<maxn
 
 int lowbit(int x) { return x & -x; }
 
@@ -680,8 +683,6 @@ void add(int x, int d)
 	}
 }
 ```
-
-
 
 ### 3.3 - rmq
 
@@ -708,14 +709,12 @@ int RMQ(int L, int R) // find min in [L, R]
 }
 ```
 
-
-
 ### 3.4.1 - segtree
 
 ```c++
 //node update
 
-const int maxn = 200000 + 10;
+const int maxn = 200000 + 10; //from 1 to n, 4*n<maxn
 int minv[maxn];
 
 int ql, qr; 
@@ -750,14 +749,12 @@ void update(int o, int L, int R) //let A[p] = v;
 }
 ```
 
-
-
 ### 3.4.2 - segtree
 
 ```c++
 //segment add
 
-const int maxn = 200000 + 10;
+const int maxn = 200000 + 10; //from 1 to n, 4*n<maxn
 int minv[maxn], maxv[maxn], sumv[maxn], addv[maxn];
 
 void maintain(int o, int L, int R)
@@ -814,14 +811,12 @@ void query(int o, int L, int R, int add) //get min, max, sum in [ql, qr]
 }
 ```
 
-
-
 ### 3.4.3 - segtree
 
 ```c++
 //segment set
 
-const int maxn = 200000 + 10;
+const int maxn = 200000 + 10; //from 1 to n, 4*n<maxn
 int minv[maxn], maxv[maxn], sumv[maxn], setv[maxn];
 
 void maintain(int o, int L, int R)
@@ -894,8 +889,6 @@ void query(int o, int L, int R) //get min, max, sum in [ql, qr]
 	}
 }
 ```
-
-
 
 ### 3.4.4 - segtree
 
@@ -994,8 +987,6 @@ namespace cyc
 }
 ```
 
-
-
 ### 3.5 - kmp
 
 ```c++
@@ -1027,5 +1018,25 @@ void find(char *T, char *P, int *f)
 			printf("%d\n", i - m + 1);
 	}
 }
+```
+
+|  i   |  0   |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |  9   |  10  |  11  |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| P[i] |  A   |  B   |  R   |  A   |  C   |  A   |  D   |  A   |  B   |  R   |  A   |  \0  |
+| F[i] |  0   |  0   |  0   |  0   |  1   |  0   |  1   |  0   |  1   |  2   |  3   |  4   |
+
+
+
+### 4.1 - LIS
+
+``` c++
+for (int i = 1; i <= n; i++) //g[1]<=g[2]<=g[3]<=...<=g[n]
+  g[i] = +oo;
+for (int i = 0; i < n; i++)
+{
+  int k = lower_bound(g + 1, g + n + 1, A[i]) - g;
+  d[i] = k;
+  g[k] = A[i];
+} //max(d) is length of LIS
 ```
 

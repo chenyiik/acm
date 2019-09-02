@@ -14,5 +14,4 @@ else
 	git push $com master
 fi
 
-git pull $github master
 git push $github master

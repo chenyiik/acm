@@ -12,18 +12,26 @@ void out(__int128 x);
 __int128 f[200][30];
 void init()
 {
-	for (char c = 'A'; c <= 'Z'; c++)
+	for (int c = 'A'; c <= 'Z'; c++)
 		f[c][1] = 1;
+		//f[c][1] = c - 'A' + 1;
 	for (int i = 2; i <= 26; i++)
-		for (char c = 'A'; c <= 'Z' - i + 1; c++)
-		//{
+		for (int c = 'A'; c <= 'Z' - i + 1; c++)
 			f[c][i] = f[c][i - 1] * (c - 'A' + 1) + f[c + 1][i - 1];
-			//out(f[c][i]), puts("");
-		//}
 }
 
-LL solve(LL n, LL k)
+void solve(LL n, __int128 k)
 {
+	int maxC = 'A';
+	for (int i = n; i >= 1; i--)
+	{
+		int c = 'A';
+		while (c <= maxC && k > f[maxC][i])
+			c++, k -= f[maxC][i];
+		putchar(c);
+		maxC = max(maxC, c);
+	}
+	puts("");
 }
 
 int main()
@@ -34,7 +42,8 @@ int main()
 	{
 		LL n; scanf("%lld", &n);
 		__int128 k; read(k);
-		printf("Case %d: %lld\n", _, solve(n, k));
+		printf("Case #%d: ", _);
+		solve(n, k);
 	}
 	return 0;
 }

@@ -6,15 +6,11 @@
 
 using namespace std;
 
-typedef long long LL;
-const LL mod = LL(1e9) + 7;
-void add(int &a, LL b) { a = (a + b) % mod; }
-void sub(int &a, LL b) { a = (a - b + mod * mod) % mod; }
-
-const int maxn = int(1e4) + 7;
 struct P { int v, d; };
+const int mod = int(1e9) + 7, maxn = int(1e4) + 7;
 vector<P> G[maxn];
 int sz[maxn][3], val[maxn][3], ans[3];
+void add(int &a, int b) { a = (a + b) % mod; }
 
 void dfs(int u, int fa)
 {
@@ -24,10 +20,8 @@ void dfs(int u, int fa)
 		dfs(q.v, u);
 		for (int i = 0; i < 3; i++)
 		{
-			int j = (q.d + i) % 3;
-			LL t = sz[q.v][i];
-			add(val[u][j], val[q.v][i] + q.d * t);
-			sz[u][j] += t;
+			add(val[u][(q.d + i) % 3], val[q.v][i] + q.d * sz[q.v][i]);
+			sz[u][(q.d + i) % 3] += sz[q.v][i];
 		}
 	}
 }
@@ -37,21 +31,13 @@ void dfs(int u, int fa, const int cur[], const int sur[])
 	for (int i = 0; i < 3; i++) add(ans[i], cur[i]);
 	for (P q : G[u]) if (q.v != fa)
 	{
-		int hlf[3], hlg[3]; memcpy(hlf, cur, sizeof(hlf));
-		for (int i = 0; i < 3; i++)
-		{
-			int j = (q.d + i) % 3;
-			LL t = sz[q.v][i];
-			sub(hlf[j], val[q.v][i] + q.d * t);
-			hlg[j] = sur[j] - t;
-		}
 		int nxt[3]; memcpy(nxt, val[q.v], sizeof(nxt));
 		int nxs[3]; memcpy(nxs, sz[q.v], sizeof(nxs));
 		for (int i = 0; i < 3; i++)
 		{
-			int j = (q.d + i) % 3;
-			add(nxt[j], hlf[i] + q.d * LL(hlg[i]));
-			add(nxs[j], hlg[i]);
+			add(nxt[(2 * q.d + i) % 3], cur[(q.d + i) % 3] - val[q.v][i] 
+					+ q.d * (sur[(q.d + i) % 3] - 2 * sz[q.v][i]));
+			add(nxs[(2 * q.d + i) % 3], sur[(q.d + i) % 3] - sz[q.v][i]);
 		}
 		dfs(q.v, u, nxt, nxs);
 	}

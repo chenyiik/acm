@@ -27,7 +27,7 @@ bool d[maxn][maxn], vis[maxn];
 int main()
 {
 	int N, M, n;
-	scanf("%d%d%d", &N, &M, &n);
+	scanf("%d%d%d", &M, &N, &n);
 	int S = 0, T = n + 1;
 	for (int i = 1; i <= n; i++)
 	{

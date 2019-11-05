@@ -1,8 +1,8 @@
-#ACM Board
+# ACM Board
 
-#####CHEN Yiik
+##### CHEN Yiik
 
-#####v1.1
+##### v1.1
 
 ***
 
@@ -10,17 +10,17 @@
 
 ## vim .vimrc
 
-####nm \<f5> :w\<cr>:!g++ % -o %< -Wall -std=c++11 && ./%<\<cr>
+#### nm \<f5> :w\<cr>:!g++ % -o %< -Wall -std=c++11 && ./%<\<cr>
 
-####nm \<f6> :w\<cr>:!python3 %\<cr>
+#### nm \<f6> :w\<cr>:!python3 %\<cr>
 
-####se ai cin ts=4 sw=4 nu cul
+#### se ai cin ts=4 sw=4 nu cul
 
 #### nm 0 ^
 
-####colo t*
+#### colo t*
 
-####nm \<f3> ggVG”+y
+#### nm \<f3> ggVG”+y
 
 ------
 
@@ -28,19 +28,19 @@
 
 ## gvim _vimrc
 
-####nm \<f5> :w\<cr>:!g++ % -o %< -Wall -std=c++11 && %<\<cr>
+#### nm \<f5> :w\<cr>:!g++ % -o %< -Wall -std=c++11 && %<\<cr>
 
-####nm \<f6> :w\<cr>:!python3 %\<cr>
+#### nm \<f6> :w\<cr>:!python3 %\<cr>
 
-####se nocp bs=indent,eol,start ai cin ts=4 sw=4 nu ru cul
+#### se nocp bs=indent,eol,start ai cin ts=4 sw=4 nu ru cul
 
 #### nm 0 ^
 
-####syntax on
+#### syntax on
 
-####colo t*
+#### colo t*
 
-####nm \<f3> ggVG”+y
+#### nm \<f3> ggVG”+y
 
 ------
 
@@ -97,7 +97,7 @@ LL inv(LL a, LL n) // inv don't exist when it return -1
 }
 ```
 
-###1.3 - pow - inv
+### 1.3 - pow - inv
 
 ```c++
 LL pow_mod(LL a, LL p, LL n)

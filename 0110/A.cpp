@@ -23,29 +23,30 @@ double find(double l,double r)
 {
     while (r-l>1e-10)
     {
-        double mid=0.5*(l+r);
-        double mid_left=0.5*(mid+l);
-        if (longest(point(mid))>longest(point(mid_left)))
-            r=mid;
+        double mid_right=r-(r-l)/3;
+        double mid_left=l+(r-l)/3;
+        if (longest(point(mid_right))>longest(point(mid_left)))
+            r=mid_right;
         else l=mid_left;
     }
-    return 0.5*(l+r);
+    return l;
 }
 int main()
 {
     int n;
-    freopen("balance.in","r",stdin);
-    freopen("test.out","w",stdout);
     while (~scanf("%d",&n) && n)
     {
         p.clear();
         double x,y;
+        double ll=1e10,rr=-1e10;
         while (n--)
         {
-            scanf("%lf%lf",&x,&y);
-            p.emplace_back(point(x,y));
+            scanf("%lf%lf", &x, &y);
+            p.emplace_back(point(x, y));
+            ll=min(ll,x);
+            rr=max(rr,x);
         }
-        double t=find(-2e5,+2e5);
+        double t=find(ll,rr);
         printf("%.9lf %.9lf\n",t,longest(point(t)));
     }
 }

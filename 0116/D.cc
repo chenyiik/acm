@@ -41,7 +41,7 @@ int main()
 		}
 		Q.push(make_pair(a[i].id, make_pair(a[i].v = ans.first + 1, i)));
 		a[i].p = ans.second;
-		if (a[i].v >= a[pos].v) pos = i;
+		if (a[i].id <= k + 1 && a[i].v >= a[pos].v) pos = i;
 	}
 	printf("%d\n", a[pos].v);
 	while (pos) printf("%d %d\n", a[pos].id, a[pos].x), pos = a[pos].p;

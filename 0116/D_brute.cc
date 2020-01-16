@@ -9,6 +9,7 @@ using namespace std;
 const int maxn = int(1e5) + 10;
 vector<int> v[maxn];
 int n, k, ans = 0;
+bool vis[100][1000][100];
 
 void brute(int l, int r, int base, int len)
 {
@@ -17,6 +18,9 @@ void brute(int l, int r, int base, int len)
 	{
 		for (int j : v[i]) if (j > base)
 		{
+			if (vis[i][j][len])
+				continue;
+			vis[i][j][len] = true;
 			int ll = i == n ? 1 : i + 1, rr = ll + k;
 			if (rr <= n)
 				brute(ll, rr, j, len + 1);

@@ -45,7 +45,7 @@ int main()
 	}
 	printf("%d\n", a[pos].v);
 	while (pos) printf("%d %d\n", a[pos].id, a[pos].x), pos = a[pos].p;
-	for (int i = 1; i <= an; i++) cout << a[i].x << '\t' << a[i].id << '\t' << a[i].v<< '\t' << a[i].p << endl;
+	//for (int i = 1; i <= an; i++) cout << a[i].x << '\t' << a[i].id << '\t' << a[i].v<< '\t' << a[i].p << endl;
 	return 0;
 }
 

@@ -3,26 +3,32 @@
 #include <cmath>
 #include <iostream>
 #include <algorithm>
-#include <map>
-#include <stack>
+#include <unordered_map>
+#include <queue>
 
 using namespace std;
 
 typedef long long LL;
 
-map<LL, LL> M;
+struct P { LL nxt, ans; };
+unordered_map<LL, P> M;
 
-void dfs(LL n, LL fa)
+LL dfs(LL n)
 {
-	if (M.find(n) != M.end())
-		return;
-	M[n] = fa;
+	auto it = M.find(n);
+	if (it != M.end()) 
+		return it->second.ans;
+	M[n] = {-1, n};
 	for (LL p = 10; p <= n; p *= 10)
 	{
 		LL a = n / p, b = n % p;
-		if (a != b)
-			dfs(abs(a - b), n);
+		if (a == b) continue;
+		LL c = abs(a - b);
+		LL d = dfs(c);
+		if (d < M[n].ans)
+			M[n] = {c, d};
 	}
+	return M[n].ans;
 }
 
 int main()
@@ -31,14 +37,13 @@ int main()
 	while (t--)
 	{
 		LL n; scanf("%lld", &n);
-		M.clear();
-		dfs(n, -1);
-		stack<LL> S;
-		for (auto i = M.begin(); i != M.end(); i = M.find(i->second))
-			S.push(i->first);
-		printf("%lu ", S.size());
-		while (!S.empty())
-			printf("%lld%c", S.top(), " \n"[S.size() == 1]), S.pop();
+		dfs(n);
+		queue<LL> Q;
+		for (auto i = M.find(n); i != M.end(); i = M.find(i->second.nxt))
+			Q.push(i->first);
+		printf("%lu ", Q.size());
+		while (!Q.empty())
+			printf("%lld%c", Q.front(), " \n"[Q.size() == 1]), Q.pop();
 	}
 	return 0;
 }

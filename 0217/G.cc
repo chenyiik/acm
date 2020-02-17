@@ -10,14 +10,7 @@ const double esp = 1e-9, pi = acos(-1.0);
 double get_dist(double x, double y) { return sqrt(x * x + y * y); }
 double get_angle(double x, double y, double dist, double a)
 {
-	double hudu = acos(x / dist);
-	if (y < 0)
-		hudu = 2.0 * pi - hudu;
-	double angle = hudu * 360 / (2.0 * pi);
-	angle = angle + a / 2 + esp;
-	if (angle > 360)
-		angle -= 360;
-	return angle;
+	return acos(x / dist) * 180 / pi + a / 2;
 }
 
 int main()
@@ -34,15 +27,16 @@ int main()
 			continue;
 		}
 		double angle = get_angle(x, y, dist, a);
-		double ti = int(X / T + esp) * (a / 360.0 * T);
-		double re = X - int(X / T + esp) * T;
-		double low = re / T * 360;
-		double high = low + a;
-		double me = angle > high - esp ? 0.0 : 
+		long long r = X / T + esp;
+		double ti = r * (a / 360.0 * T), re = X - r * T;
+		double low = re / T * 360, high = low + a;
+		ti += angle > high - esp ? 0.0 : 
 			(high - (angle > a - esp ? 0.0 : a - angle) 
 			- max(angle, low)) / 360 * T;
-		printf("%.11f\n", ti + me);
-
+		angle += 360;
+		ti += angle > high - esp ? 0.0 : 
+			(high - max(angle, low)) / 360 * T;
+		printf("%.11f\n", ti);
 	}
 	return 0;
 }

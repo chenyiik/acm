@@ -27,7 +27,7 @@ int main()
         }
         sort(deltah,deltah+n+1);
         double ans=-1;
-        for (int l=0;l<=n;l++)
+        /*for (int l=0;l<=n;l++)
             for (int r=l+1;r<=n;r++)
             {
                 static bool vis[100050];
@@ -56,8 +56,22 @@ int main()
                     ex=min(0.0,max(1.0,ex));
                     ans=max(ans,double(r-l)+ex);
                 }
+            }*/
+        int l=n;
+        for (auto r:deltah)
+        {
+            auto xr=r.x;
+            if (l<xr)
+            {
+                double ex=0;
+                if (l>=1) ex=max(ex,double(r.y-(h[l].y-g*(l)))/fabs((h[l].y-g*(l))-(h[l-1].y-g*(l-1))));
+                if (xr<n) ex=max(ex,double(r.y-(h[l].y-g*(l)))/fabs((h[xr+1].y-g*(xr+1))-r.y));
+                ex=max(0.0,min(1.0,ex));
+                ans=max(ans,double(xr-l)+ex);
             }
-        cout<<ans<<endl;
+            l=min(l,xr);
+        }
+        if (ans<0) cout<<"-1"<<endl;else cout<<ans<<endl;
     }
 
 }

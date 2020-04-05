@@ -37,11 +37,10 @@ int main()
 void build(int L,int R,int p);
 void update(int L,int R,int x,int p);
 int query(int L,int R,int p);
-int query2(int L,int R,int p);
 
 void solve(int n, int k)
 {
-	build(1, k, 1);
+	build(1, max(1, k), 1);
 	for (int i = 1; i <= k; i++)
 		update(i, i, s[i].c, 1);
 	priority_queue<R> Q;
@@ -52,7 +51,9 @@ void solve(int n, int k)
 			Q.push({s[cnt].b, cnt}), cnt++;
 		if (t[i] == 0)
 		{
-			if (query(1, cnt - 1, 1) >= 2)
+			if (Q.empty())
+				r[i] = -1;
+			else if (query(1, cnt - 1, 1) >= 2)
 			{
 				r[i] = -1;
 				update(1, cnt - 1, -2, 1);
@@ -70,25 +71,27 @@ void solve(int n, int k)
 	}
 }
 
+int sum(int x);
+void add(int x, int d, int n);
+
 bool init(int n, int k)
 {
-	build(1, n, 1);
 	for (int i = 1; i <= n; i++)
 	{
 		scanf("%d", &t[i]);
 		if (t[i] == -1)
-			update(i, i, -1, 1);
+			add(i, -1, n);
 		else
-			update(i, i, 1, 1);
+			add(i, 1, n);
 	}
 	for (int i = 1; i <= k; i++)
 	{
 		scanf("%d%d%d", &s[i].a, &s[i].b, &s[i].c);
-		s[i].c = query2(s[i].a, s[i].b, 1) - s[i].c;
+		s[i].c = sum(s[i].b) - sum(s[i].a - 1) - s[i].c;
 		if (s[i].c < 0)
 			return false;
 	}
-	sort(s + 1, s + 1 + n);
+	sort(s + 1, s + 1 + k);
 	return true;
 }
 
@@ -96,6 +99,30 @@ void out(int n)
 {
 	for (int i = 1; i <= n; i++)
 		printf("%d%c", r[i], " \n"[i == n]);
+}
+
+int C[maxn * 2]; //from 1 to n
+
+int lowbit(int x) { return x & -x; }
+
+int sum(int x)
+{
+	int ret = 0;
+	while (x > 0)
+	{
+		ret += C[x];
+		x -= lowbit(x);
+	}
+	return ret;
+}
+
+void add(int x, int d, int n)
+{
+	while (x <= n)
+	{
+		C[x] += d;
+		x += lowbit(x);
+	}
 }
 
 struct node{

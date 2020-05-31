@@ -1,0 +1,72 @@
+#include <cstdio>
+#include <cstring>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+const int maxn = int(1e5) + 5, mod = int(1e9) + 7;
+struct P { int l, r, o; } a[maxn];
+
+int light[maxn];
+int dfs(int i) { return light[i] ? light[i] : (light[i] = dfs(a[i].l) + dfs(a[i].r)); }
+
+typedef long long LL;
+LL pow_mod(LL p, LL a = 2, LL n = mod);
+void f(int &a, int b) { a = (a + b) % mod; }
+int g(long long a, long long b) { return a * b % mod; }
+
+int dp[maxn][3];
+int h(int i, int e)
+{
+	if (~dp[i][e]) return (cout << i << ' ' << e << ' ' << dp[i][e] << endl), dp[i][e];
+	int s = 0, l = a[i].l, r = a[i].r, o = a[i].o;
+	/* */if (e == 2 && o == 2)
+		f(s, g(h(l, 2), h(r, 2)));
+		//f(s, g(h(l, 0), h(r, 0))),
+		//f(s, g(h(l, 0), h(r, 1))),
+		//f(s, g(h(l, 1), h(r, 0))),
+		//f(s, g(h(l, 1), h(r, 1)));
+	else if (e == 2 && o == 1)
+		f(s, g(h(l, 0), h(r, 0))),
+		f(s, g(h(l, 0), h(r, 1))),
+		f(s, g(h(l, 1), h(r, 0)));
+	else if (e == 2 && o == 0)
+		f(s, g(h(l, 1), h(r, 1)));
+	else if (e == 1 && o == 2)
+		f(s, g(h(l, 0), h(r, 0))),
+		f(s, g(h(l, 0), h(r, 1))),
+		f(s, g(h(l, 1), h(r, 0)));
+	else if (e == 1 && o == 1) f(s, pow_mod(light[i]));
+	else if (e == 1 && o == 0) ;
+	else if (e == 0 && o == 2)
+		f(s, g(h(l, 1), h(r, 1)));
+	else if (e == 0 && o == 1) ;
+	else if (e == 0 && o == 0) f(s, pow_mod(light[i]));
+	cout << i << ' ' << e << ' ' << o << ' ' << s << endl;
+	return dp[i][e] = s;
+}
+
+int main()
+{
+	memset(dp, -1, sizeof(dp));
+	int n; scanf("%d", &n);
+	for (int i = 1; i <= n; i++)
+	{
+		scanf("%d%d%d", &a[i].l, &a[i].r, &a[i].o);
+		if (a[i].o == -1) a[i].o = 2;
+	}
+	light[0] = 1, dfs(1);
+	dp[0][0] = dp[0][1] = 1, dp[0][2] = 2;
+	printf("%d\n", h(1, 2));
+	return 0;
+}
+
+LL pow_mod(LL p, LL a, LL n)
+{
+	if (p == 0) return 1;
+	LL ans = pow_mod(p / 2, a, n);
+	ans = ans * ans % n;
+	if (p % 2 == 1) ans = ans * a % n;
+	return ans;
+}

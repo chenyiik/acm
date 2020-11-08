@@ -1,28 +1,19 @@
-#include<bits/stdc++.h>
-using namespace std;
-inline void readint(long long &res)
-{
-	res=0;
-	char c;
-	while(c=getchar(),!isdigit(c));
-	do{
-		res=res*10+c^48;
-	}while(c=getchar(),isdigit(c));
-}
-int main()
-{
-	long long n,m,q;readint(n),readint(m),readint(q);
-	static long long x[1000050];
-	for (long long i=1;i<=n;i++) readint(x[i]);
-	while (q--)
-	{
-		long long p,k;
-		readint(p),readint(k);
-		long long wh=p*x[k];
-		long long twh=wh/m;
-		wh=wh%m;
-		if (twh&1) wh=m-wh;
-		printf("%lld\n",wh);
+#include<cstdio>
+#define M 1000005
+#define LL long long
+int X[M];
+int main(){
+	int i,n,m,q;
+	scanf("%d %d %d",&n,&m,&q);
+	for(i=1;i<=n;i++)
+		scanf("%d",&X[i]);
+	while(q--){
+		int p,k;
+		scanf("%d %d",&p,&k);
+		int sum=(1LL*X[k]*p)%(2LL*m);
+		if(sum>=m)
+			printf("%d\n",2*m-sum);
+		else printf("%d\n",sum);
 	}
+	return 0;
 }
-

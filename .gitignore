@@ -1,5 +1,6 @@
 .DS_Store
 cmake
+.cmake
 *.exe
 *.class
 *.o
@@ -13,3 +14,4 @@ unsolved.md
 unsolved.md.bak
 autosync.sh
 *.obj
+*.icloud

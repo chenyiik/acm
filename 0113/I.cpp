@@ -1,0 +1,40 @@
+#include<cstdio>
+int main(){
+	int n,c2=0,c1=0;
+	scanf("%d",&n);
+	while(n>0){
+		if(n>=2){
+			n-=2;
+			c2++;
+		}
+		if(n>=1){
+			n--;
+			c1++;
+		}
+	}
+	if(c2>=c1){
+		while(c2+c1>0){
+			if(c2>0){
+				printf("2");
+				c2--;
+			}
+			if(c1>0){
+				printf("1");
+				c1--;
+			}
+		}
+	}else{
+		while(c1+c2>0){
+			if(c1>0){
+				printf("1");
+				c1--;
+			}
+			if(c2>0){
+				printf("2");
+				c2--;
+			}
+		}
+	}
+	puts("");
+	return 0;
+}

@@ -9,27 +9,16 @@ int main(){
 	while(m--){
 		int L,R;
 		scanf("%d %d",&L,&R);
-		if(L<R){
-			for(i=L;i<=R;i++)
-				cnt[A[i]]++;
-			int p=L;
-			for(i=1;i<=n;i++){
-				if(cnt[i]){
-					cnt[i]--;
-					A[p++]=i;
-					if(p>R)break;
-				}
-			}
-		}else{
-			for(i=L;i<=R;i++)
-				cnt[A[i]]++;
-			int p=L;
-			for(i=n;i>0;i--){
-				if(cnt[i]){
-					cnt[i]--;
-					A[p++]=i;
-					if(p>R)break;
-				}
+		for(i=L;i<=R;i++)
+			cnt[A[i]]++;
+		int p=L<R?L:R;
+		int dir=L<R?1:-1;
+		for(i=1;i<=n;i++){
+			if(cnt[i]){
+				cnt[i]--;
+				A[p]=i;
+				p+=dir;
+				if(p>R||p<L)break;
 			}
 		}
 	}

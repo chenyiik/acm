@@ -3,7 +3,7 @@
 #include<cstdlib>
 int main(){
 	srand(time(NULL));
-	int n=10;
+	int n=7;
 	printf("%d\n",n);
 	for(int i=0;i<n;i++)
 		printf("%d ",rand()%50-10);

@@ -2,6 +2,7 @@
 #include<cmath>
 #include<cstring>
 #include<algorithm>
+#include <iostream>
 #define M 50
 using namespace std;
 int A[M],B[M];
@@ -20,6 +21,7 @@ int main(){
 			memcpy(B,A,sizeof(A));
 		}
 	}while(next_permutation(A,A+n));
+	cout << ans << endl;
 	for(i=0;i<n;i++)
 		printf("%d ",B[i]);
 	puts("");

@@ -63,23 +63,26 @@ int main()
 		int x, y; scanf("%d%d", &x, &y);
 		G[x].push_back(y), G[y].push_back(x);
 	}
-	int one = 0, two = 0;
+	int one = 0, two = 0, zero = 0;
 	for (int i = 1; i <= n; i++) if (!vis[i])
 	{
 		if (check(i)) one++;
 		else two++;
 		mark(i);
+		if (G[i].size() == 0)
+			zero++;
 	}
 	//cout << one << ' ' << two << endl;
-	if (one == 0 && two == 1)
-		puts("1");
-	if (one == 0 && two > 1)
-		printf("%d\n", two + 1);
-	if (one == 1 && two == 0)
-		puts("0");
-	if (one == 1 && two > 1)
-		printf("%d\n", one + two);
-	if (one > 1)
-		printf("%d\n", one + two + (1 ^ (one % 2 )));
+	if (one == 0)
+	{ 
+		printf("%d\n", two);
+	}
+	else 
+	{
+		if (one == zero)
+			printf("%d\n", one + two);
+		else
+			printf("%d\n", one + two - 1);
+	}
 	return 0;
 }

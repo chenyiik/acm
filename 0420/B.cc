@@ -10,7 +10,24 @@ int main()
 	int T; scanf("%d", &T);
 	while (T--)
 	{
-		int n, a, b; scanf("%d%d%d", &n, &a, &b);
+		int n; 
+		long long a, b; scanf("%d%lld%lld", &n, &a, &b);
+		long long s = a | b;
+		for (int i = 2; i <= n; i++)
+		{
+			swap(a, b);
+			b += a;
+			if (b > (long long)1e17) break;
+			s |= b;
+		}
+		int ans = 0;
+		while (s)
+		{
+			if ((s & 1) == 0)
+				ans++;
+			s >>= 1;
+		}
+		printf("%d\n", ans);
 
 	}
 	return 0;

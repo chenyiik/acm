@@ -15,3 +15,5 @@ while round<1e18:
             wf-=1
         else:
             i+=1
+    if wf==0:
+        break

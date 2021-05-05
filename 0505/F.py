@@ -16,4 +16,5 @@ while round<1e18:
         else:
             i+=1
     if wf==0:
+        print()
         break

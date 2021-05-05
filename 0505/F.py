@@ -10,11 +10,10 @@ while round<1e18:
     while i<wf:
         x[i][0]-=(i+1)
         if x[i][0]<=0:
-            print(x[i][1]+1,end=" ")
+            print(x[i][1]+1,end=" " if wf>1 else "\n")
             x=x[:i]+x[i+1:]
             wf-=1
         else:
             i+=1
     if wf==0:
-        print()
         break
